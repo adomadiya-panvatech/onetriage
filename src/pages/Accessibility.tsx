@@ -1,3 +1,5 @@
+import { CONFIG } from "@/config/constants";
+
 const AccessibilityPage = () => {
   return (
     <div className="min-h-screen bg-light-bg py-12">
@@ -188,10 +190,10 @@ const AccessibilityPage = () => {
                 <p className="text-foreground">
                   <strong>Email:</strong>{" "}
                   <a
-                    href="mailto:accessibility@onetriage.com"
+                    
                     className="text-secondary hover:text-secondary/80 transition-colors"
                   >
-                    accessibility@onetriage.com
+                    {CONFIG.EMAILS.SUPPORT}
                   </a>
                 </p>
                 <p className="text-foreground">

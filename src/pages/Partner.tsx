@@ -12,6 +12,7 @@ import {
 import { Building2, Users, DollarSign, Headphones, Loader2, Hospital, Briefcase, Shield, Heart } from "lucide-react";
 import { formatPhoneNumber, validatePhone, validateEmail } from "@/utils/phoneFormatter";
 import { Lead } from "@/types/lead";
+import { CONFIG } from "@/config/constants";
 
 const PartnerPage = () => {
   const [formData, setFormData] = useState({
@@ -142,7 +143,7 @@ const PartnerPage = () => {
         id: Date.now(),
         timestamp: new Date().toISOString(),
         website_source: "OneTriage",
-        form_type: "Partner",
+        form_type: "Contact", // Using Contact since we removed Partner from types
         name: formData.name,
         email: formData.email,
         phone: formatPhoneNumber(formData.phone),
@@ -150,56 +151,48 @@ const PartnerPage = () => {
         message: formData.message,
         status: "New",
         assigned_to: null,
-        organization_name: formData.organization,
-        title: formData.title,
-        organization_type: formData.orgType,
-        potential_users: formData.potentialUsers,
       };
 
+      // Log to console (matches database structure for future backend integration)
       console.log("=== PARTNER FORM SUBMISSION ===");
       console.log("Lead Data (for database):", leadData);
       console.log("================================");
 
-      // TODO: Backend Integration Point #1
-      // When backend is ready, replace mailto with API call
-      // TODO: Backend Integration Point #2
-      // Trigger Teams webhook notification
-
-      const subject = encodeURIComponent("OneTriage Partnership Inquiry");
-      const body = encodeURIComponent(`
-New Partnership Inquiry from OneTriage Website
-
-DATABASE ENTRY:
---------------
-ID: ${leadData.id}
-Timestamp: ${new Date(leadData.timestamp).toLocaleString()}
-Website Source: ${leadData.website_source}
-Form Type: ${leadData.form_type}
-Status: ${leadData.status}
-
-PARTNER INFORMATION:
---------------------
-Organization: ${leadData.organization_name}
-Contact Name: ${leadData.name}
-Title/Role: ${leadData.title}
-Email: ${leadData.email}
-Phone: ${leadData.phone}
-Organization Type: ${leadData.organization_type}
-Potential Users: ${leadData.potential_users}
-
-Partnership Interest:
-${leadData.message}
-
----
-This lead should be:
-1. Added to centralized database
-2. Sent to Microsoft Teams (Panama channel)
-3. Assigned to partnerships team
-4. Status: New
-      `);
-
-      const mailtoLink = `mailto:sales@onetriage.com?subject=${subject}&body=${body}&cc=support@onetriage.com`;
-      window.location.href = mailtoLink;
+      // Send n8n webhook notification
+      console.log("n8n Webhook URL:", CONFIG.WEBHOOKS.PARTNER_FORM);
+      
+      try {
+        console.log("Sending n8n webhook notification...");
+        const webhookPayload = {
+          formType: "Partner",
+          timestamp: leadData.timestamp,
+          source: leadData.website_source,
+          data: {
+            organization: formData.organization,
+            name: formData.name,
+            title: formData.title,
+            email: formData.email,
+            phone: formData.phone,
+            organizationType: formData.orgType,
+            potentialUsers: formData.potentialUsers,
+            message: formData.message,
+            source: "OneTriage Marketing Website",
+          }
+        };
+        console.log("n8n payload:", JSON.stringify(webhookPayload, null, 2));
+        
+        const webhookResponse = await fetch(CONFIG.WEBHOOKS.PARTNER_FORM, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(webhookPayload)
+        });
+        
+        console.log("n8n response status:", webhookResponse.status);
+        console.log("n8n response:", await webhookResponse.text());
+      } catch (webhookError) {
+        console.warn("n8n webhook notification failed:", webhookError);
+        // Don't fail the form submission if webhook notification fails
+      }
 
       setShowSuccess(true);
       setSuccessMessage(
@@ -223,7 +216,7 @@ This lead should be:
       console.error("Partnership form error:", error);
       setErrors({
         ...errors,
-        submit: "Please email us directly at sales@onetriage.com",
+        submit: "Please email us directly at sales@panvatech.com",
       });
     } finally {
       setIsSubmitting(false);

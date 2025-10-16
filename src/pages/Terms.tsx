@@ -1,3 +1,5 @@
+import { CONFIG } from "@/config/constants";
+
 const TermsPage = () => {
   const sections = [
     {
@@ -100,10 +102,10 @@ const TermsPage = () => {
                 <p className="text-foreground">
                   <strong>Email:</strong>{" "}
                   <a
-                    href="mailto:support@onetriage.com"
+                  
                     className="text-secondary hover:text-secondary/80 transition-colors"
                   >
-                    support@onetriage.com
+                    {CONFIG.EMAILS.SUPPORT}
                   </a>
                 </p>
                 <p className="text-foreground">

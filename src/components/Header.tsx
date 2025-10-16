@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/onetriage_logo.png";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,9 +22,11 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-primary">
-              One<span className="text-secondary">Triage</span>
-            </div>
+            <img
+              src={heroImage}
+              alt="Doctor providing telemedicine consultation via video call"
+              className="w-50 h-10   object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -95,3 +98,4 @@ const Header = () => {
 };
 
 export default Header;
+

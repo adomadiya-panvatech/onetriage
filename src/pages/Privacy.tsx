@@ -1,3 +1,5 @@
+import { CONFIG } from "@/config/constants";
+
 const PrivacyPolicyPage = () => {
   const sections = [
     {
@@ -154,10 +156,9 @@ const PrivacyPolicyPage = () => {
                 <p className="text-foreground">
                   <strong>Email:</strong>{" "}
                   <a
-                    href="mailto:privacy@onetriage.com"
                     className="text-secondary hover:text-secondary/80 transition-colors"
                   >
-                    privacy@onetriage.com
+                    {CONFIG.EMAILS.SUPPORT}
                   </a>
                 </p>
                 <p className="text-foreground mt-2">

@@ -5,13 +5,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, MapPin, Mail, Clock, Loader2 } from "lucide-react";
 import { formatPhoneNumber, validatePhone, validateEmail } from "@/utils/phoneFormatter";
 import { Lead } from "@/types/lead";
+import { CONFIG } from "@/config/constants";
 
 const ContactPage = () => {
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     company: "",
+    serviceInterest: "",
     message: "",
   });
 
@@ -45,6 +48,10 @@ const ContactPage = () => {
       newErrors.phone = "Phone number is required";
     } else if (!validatePhone(formData.phone)) {
       newErrors.phone = "Invalid phone number (must be 10 digits)";
+    }
+
+    if (!formData.serviceInterest.trim()) {
+      newErrors.serviceInterest = "Service interest is required";
     }
 
     if (!formData.message.trim()) {
@@ -85,85 +92,77 @@ const ContactPage = () => {
       console.log("Lead Data (for database):", leadData);
       console.log("================================");
 
-      // TODO: Backend Integration Point #1
-      // When backend is ready, replace mailto with API call:
-      /*
-      const response = await fetch('YOUR_API_ENDPOINT/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(leadData)
+      // Split full name into first and last name
+      const nameParts = formData.fullName.trim().split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+        // Send n8n webhook notification
+        console.log("n8n Webhook URL:", CONFIG.WEBHOOKS.CONTACT_FORM);
+        
+        try {
+          console.log("Sending n8n webhook notification...");
+          const webhookPayload = {
+            formType: "Contact",
+            timestamp: leadData.timestamp,
+            source: leadData.website_source,
+            data: {
+              name: leadData.name,
+              email: leadData.email,
+              phone: leadData.phone,
+              company: leadData.company || null,
+              serviceInterest: formData.serviceInterest,
+              message: leadData.message,
+              source: "OneTriage Marketing Website",
+            }
+          };
+          console.log("n8n payload:", JSON.stringify(webhookPayload, null, 2));
+          
+          const webhookResponse = await fetch(CONFIG.WEBHOOKS.CONTACT_FORM, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(webhookPayload)
+          });
+          
+          console.log("n8n response status:", webhookResponse.status);
+          console.log("n8n response:", await webhookResponse.text());
+        } catch (webhookError) {
+          console.warn("n8n webhook notification failed:", webhookError);
+          // Don't fail the form submission if webhook notification fails
+        }
+
+      // Call API endpoint
+      const apiPayload = {
+        lead: {
+          firstName: firstName,
+          lastName: lastName,
+          email: leadData.email,
+          phone: leadData.phone,
+          company: leadData.company || "",
+          serviceInterest: formData.serviceInterest,
+          message: leadData.message,
+        },
+        submittedAt: leadData.timestamp,
+        source: "OneTriage Marketing Website",
+      };
+
+      const response = await fetch(CONFIG.API_ENDPOINTS.CONTACT_SUBMIT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(apiPayload),
       });
-      
-      if (!response.ok) throw new Error('API submission failed');
-      */
 
-      // TODO: Backend Integration Point #2
-      // Trigger Teams webhook notification:
-      /*
-      await fetch('YOUR_TEAMS_WEBHOOK_URL', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          "@type": "MessageCard",
-          "@context": "http://schema.org/extensions",
-          "themeColor": "1e3a5f",
-          "summary": "New OneTriage Contact Form Submission",
-          "sections": [{
-            "activityTitle": "New Contact Form Lead",
-            "activitySubtitle": "OneTriage Website",
-            "facts": [
-              { "name": "Name:", "value": leadData.name },
-              { "name": "Email:", "value": leadData.email },
-              { "name": "Phone:", "value": leadData.phone },
-              { "name": "Company:", "value": leadData.company || 'N/A' },
-              { "name": "Message:", "value": leadData.message },
-              { "name": "Source:", "value": leadData.website_source },
-              { "name": "Time:", "value": new Date(leadData.timestamp).toLocaleString() }
-            ]
-          }]
-        })
-      });
-      */
+      if (!response.ok) {
+        throw new Error(`API call failed with status ${response.status}`);
+      }
 
-      // Current implementation: mailto (temporary solution)
-      const subject = encodeURIComponent("OneTriage Contact Form Submission");
-      const body = encodeURIComponent(`
-New Contact Form Submission from OneTriage Website
-
-DATABASE ENTRY:
---------------
-ID: ${leadData.id}
-Timestamp: ${new Date(leadData.timestamp).toLocaleString()}
-Website Source: ${leadData.website_source}
-Form Type: ${leadData.form_type}
-Status: ${leadData.status}
-
-LEAD INFORMATION:
------------------
-Name: ${leadData.name}
-Email: ${leadData.email}
-Phone: ${leadData.phone}
-Company: ${leadData.company || "N/A"}
-
-Message:
-${leadData.message}
-
----
-This lead should be:
-1. Added to centralized database
-2. Sent to Microsoft Teams (Panama channel)
-3. Assigned status: New
-      `);
-
-      // Send to support email with CC to sales
-      const mailtoLink = `mailto:support@onetriage.com?subject=${subject}&body=${body}&cc=sales@onetriage.com`;
-      window.location.href = mailtoLink;
+    
 
       // Show success message
       setShowSuccess(true);
-      setSuccessMessage(
-        "Thank you! We'll respond within 24 hours. Your email client has been opened to send the inquiry."
-      );
+      setSuccessMessage("Thank you! Your message has been sent successfully. We'll respond within 24 hours.");
 
       // Reset form after 3 seconds
       setTimeout(() => {
@@ -172,6 +171,7 @@ This lead should be:
           email: "",
           phone: "",
           company: "",
+          serviceInterest: "",
           message: "",
         });
         setShowSuccess(false);
@@ -181,7 +181,7 @@ This lead should be:
       setErrors({
         ...errors,
         submit:
-          "There was an error submitting the form. Please try again or email us directly at support@onetriage.com",
+          "There was an error sending your message. Please try again, or email us directly at support@onetriage.com",
       });
     } finally {
       setIsSubmitting(false);
@@ -292,6 +292,24 @@ This lead should be:
 
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
+                    Service Interest <span className="text-destructive">*</span>
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="e.g., Healthcare IT Solutions, Telemedicine, etc."
+                    value={formData.serviceInterest}
+                    onChange={(e) =>
+                      setFormData({ ...formData, serviceInterest: e.target.value })
+                    }
+                    className={errors.serviceInterest ? "border-destructive" : ""}
+                  />
+                  {errors.serviceInterest && (
+                    <p className="mt-1 text-sm text-destructive">{errors.serviceInterest}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
                     Message/Comments <span className="text-destructive">*</span>
                   </label>
                   <Textarea
@@ -376,10 +394,10 @@ This lead should be:
               <div className="space-y-3">
                 <div>
                   <a
-                    href="mailto:support@onetriage.com"
+                    href="#"
                     className="text-secondary hover:text-secondary/80 transition-colors font-semibold block"
                   >
-                    support@onetriage.com
+                    {CONFIG.EMAILS.SUPPORT}
                   </a>
                   <p className="text-xs text-muted-foreground">
                     Support & General Inquiries
@@ -387,13 +405,13 @@ This lead should be:
                 </div>
                 <div>
                   <a
-                    href="mailto:sales@onetriage.com"
+                    href="#"
                     className="text-secondary hover:text-secondary/80 transition-colors font-semibold block"
                   >
-                    sales@onetriage.com
+                    {CONFIG.EMAILS.SALES}
                   </a>
                   <p className="text-xs text-muted-foreground">
-                    Sales & Partnerships
+                    Sales & Business Development
                   </p>
                 </div>
               </div>

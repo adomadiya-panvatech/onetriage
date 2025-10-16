@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { CONFIG } from "@/config/constants";
 
 const Footer = () => {
   return (
@@ -76,16 +77,15 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" />
                 <div className="space-y-1">
                   <a
-                    href="mailto:support@onetriage.com"
-                    className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm block"
+                   
+                    className="text-primary-foreground/80  text-sm block"
                   >
-                    support@onetriage.com
+                    {CONFIG.EMAILS.SUPPORT} 
                   </a>
                   <a
-                    href="mailto:sales@onetriage.com"
-                    className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm block"
+                    className="text-primary-foreground/80  text-sm block"
                   >
-                    sales@onetriage.com
+                    {CONFIG.EMAILS.SALES}
                   </a>
                 </div>
               </li>
@@ -105,3 +105,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

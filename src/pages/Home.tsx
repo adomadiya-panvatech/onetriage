@@ -4,6 +4,15 @@ import { Clock, Shield, Calendar, Home, Users, FileCheck, Check } from "lucide-r
 import heroImage from "@/assets/hero-telemedicine.jpg";
 
 const HomePage = () => {
+  const scrollToHowItWorks = () => {
+    const element = document.getElementById('how-it-works');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
   const features = [
     {
       icon: Clock,
@@ -70,12 +79,12 @@ const HomePage = () => {
                   <Link to="/contact">Get Started</Link>
                 </Button>
                 <Button
-                  asChild
                   variant="outline"
                   size="lg"
                   className="bg-white/10 border-white text-white hover:bg-white hover:text-primary"
+                  onClick={scrollToHowItWorks}
                 >
-                  <Link to="#how-it-works">Learn More</Link>
+                  Learn More
                 </Button>
               </div>
             </div>
