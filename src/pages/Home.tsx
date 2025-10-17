@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Clock, Shield, Calendar, Home, Users, FileCheck, Check } from "lucide-react";
-import heroImage from "@/assets/hero-telemedicine.jpg";
+import heroImage from "@/assets/hero-professional.jpg";
 
 const HomePage = () => {
   const scrollToHowItWorks = () => {
@@ -61,66 +61,64 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-hero text-white overflow-hidden min-h-[90vh] flex items-center">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,107,53,0.4),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,193,7,0.3),transparent_50%)]" />
+      <section className="relative bg-gradient-hero text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,107,53,0.15),transparent_50%)]" />
         </div>
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent_0%,transparent_45%,hsl(210_52%_24%_/_0.3)_55%,hsl(210_52%_24%_/_0.6)_100%)] hidden md:block" />
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-8 z-10 animate-fade-in">
-              <div className="inline-block">
-                <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/30">
-                  🩺 24/7 Healthcare Access
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="space-y-6 z-10">
+              <div className="inline-block mb-2">
+                <span className="bg-secondary/20 text-white px-4 py-2 rounded-md text-sm font-medium border border-secondary/30">
+                  Trusted Telemedicine Platform
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight">
-                Healthcare That
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent mt-2">
-                  Fits Your Life
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Professional Healthcare
+                <span className="block text-secondary mt-2">
+                  On Your Schedule
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-xl">
-                Connect with trusted healthcare providers instantly through secure video consultations — anytime, anywhere.
+              <p className="text-xl text-white/80 leading-relaxed max-w-xl">
+                Connect with board-certified healthcare providers through secure video consultations. Quality care, delivered conveniently.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 shadow-xl hover:shadow-2xl transition-all duration-300 text-lg px-8 py-6 hover:scale-105">
-                  <Link to="/contact">Get Started Free</Link>
+              <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-white shadow-lg text-base px-8 py-6">
+                  <Link to="/contact">Schedule Consultation</Link>
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="bg-white/10 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white/20 text-lg px-8 py-6"
+                  className="bg-transparent border-2 border-white/80 text-white hover:bg-white/10 text-base px-8 py-6"
                   onClick={scrollToHowItWorks}
                 >
-                  See How It Works
+                  Learn More
                 </Button>
               </div>
-              <div className="flex items-center gap-8 pt-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold">50K+</div>
-                  <div className="text-white/70 text-sm">Consultations</div>
+              <div className="flex items-center gap-8 pt-8 border-t border-white/20">
+                <div>
+                  <div className="text-2xl font-bold">50,000+</div>
+                  <div className="text-white/60 text-sm">Consultations</div>
                 </div>
-                <div className="h-12 w-px bg-white/30"></div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold">4.9★</div>
-                  <div className="text-white/70 text-sm">Patient Rating</div>
+                <div className="h-10 w-px bg-white/20"></div>
+                <div>
+                  <div className="text-2xl font-bold">4.9/5</div>
+                  <div className="text-white/60 text-sm">Patient Rating</div>
                 </div>
-                <div className="h-12 w-px bg-white/30"></div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold">24/7</div>
-                  <div className="text-white/70 text-sm">Available</div>
+                <div className="h-10 w-px bg-white/20"></div>
+                <div>
+                  <div className="text-2xl font-bold">24/7</div>
+                  <div className="text-white/60 text-sm">Available</div>
                 </div>
               </div>
             </div>
-            <div className="relative animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="absolute -inset-4 bg-gradient-to-r from-secondary to-accent rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-secondary/20 to-primary/20 rounded-2xl blur-xl"></div>
               <img
                 src={heroImage}
-                alt="Doctor providing telemedicine consultation via video call"
-                className="relative rounded-3xl shadow-2xl ring-4 ring-white/20 transform hover:scale-105 transition-transform duration-500"
+                alt="Professional healthcare provider during telemedicine consultation"
+                className="relative rounded-2xl shadow-2xl w-full"
               />
             </div>
           </div>
@@ -128,37 +126,30 @@ const HomePage = () => {
       </section>
 
       {/* Key Features Section */}
-      <section className="py-20 md:py-32 bg-gradient-subtle relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="py-20 md:py-28 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Why OneTriage</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 mt-3">
-              Healthcare Access <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Reimagined</span>
+            <span className="text-secondary font-semibold text-sm uppercase tracking-wide">Our Advantages</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 mt-3">
+              Why Healthcare Professionals Choose OneTriage
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Modern healthcare designed around your busy lifestyle
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Enterprise-grade telemedicine infrastructure built for modern healthcare delivery
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group relative bg-gradient-card p-8 rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 border border-border/50"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="bg-white p-8 rounded-xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative">
-                  <div className="bg-gradient-to-br from-primary to-primary-light w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed">{feature.description}</p>
+                <div className="bg-primary/10 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
+                  <feature.icon className="h-7 w-7 text-primary" />
                 </div>
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -166,34 +157,27 @@ const HomePage = () => {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 md:py-32 bg-white relative">
+      <section id="how-it-works" className="py-20 md:py-28 bg-light-bg">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Simple Process</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 mt-3">
-              Get Care in <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">3 Easy Steps</span>
+          <div className="text-center mb-16">
+            <span className="text-secondary font-semibold text-sm uppercase tracking-wide">How It Works</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 mt-3">
+              Three Simple Steps to Quality Care
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From booking to treatment in minutes, not hours
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Professional healthcare consultation process, streamlined for efficiency
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-12 lg:gap-16 max-w-6xl mx-auto relative">
-            {/* Connection Lines */}
-            <div className="hidden md:block absolute top-10 left-0 right-0 h-1">
-              <div className="absolute left-[16.666%] right-[16.666%] top-0 h-px bg-gradient-to-r from-secondary via-primary to-accent opacity-30"></div>
-            </div>
-            
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {steps.map((step, index) => (
-              <div key={index} className="text-center relative">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-secondary to-accent text-white text-2xl font-bold mb-8 shadow-xl hover:scale-110 transition-transform duration-300 relative z-10">
+              <div key={index} className="text-center bg-white p-8 rounded-xl border border-border">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white text-xl font-bold mb-6">
                   {step.number}
                 </div>
-                <div className="bg-light-bg p-6 rounded-2xl hover:shadow-lg transition-all duration-300">
-                  <h3 className="text-xl font-bold text-foreground mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">{step.description}</p>
-                </div>
+                <h3 className="text-lg font-bold text-foreground mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground">{step.description}</p>
               </div>
             ))}
           </div>
@@ -201,32 +185,29 @@ const HomePage = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 md:py-32 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,107,53,0.2),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,193,7,0.15),transparent_50%)]"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="py-20 md:py-28 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Your Advantages</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 mt-3">
-              Why Patients <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Love OneTriage</span>
+            <span className="text-secondary font-semibold text-sm uppercase tracking-wide">Patient Benefits</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 mt-3">
+              Comprehensive Telemedicine Benefits
             </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
-              Healthcare that works around your schedule, not the other way around
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Designed for convenience without compromising on quality of care
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="group flex items-center space-x-4 bg-white/10 backdrop-blur-sm p-5 rounded-xl border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105"
+                className="flex items-center space-x-3 bg-light-bg p-4 rounded-lg border border-border"
               >
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center shadow-lg">
-                    <Check className="h-5 w-5 text-white" strokeWidth={3} />
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Check className="h-5 w-5 text-primary" strokeWidth={2.5} />
                   </div>
                 </div>
-                <span className="text-white font-medium text-lg">{benefit}</span>
+                <span className="text-foreground font-medium">{benefit}</span>
               </div>
             ))}
           </div>
@@ -234,42 +215,40 @@ const HomePage = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 md:py-32 bg-gradient-subtle">
+      <section className="py-20 md:py-28 bg-light-bg">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Testimonials</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 mt-3">
-              Loved by <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Thousands</span>
+            <span className="text-secondary font-semibold text-sm uppercase tracking-wide">Patient Reviews</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 mt-3">
+              Trusted by Healthcare Consumers Nationwide
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Real stories from real patients across the nation
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Verified patient testimonials from our telemedicine platform
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[1, 2, 3].map((item) => (
               <div
                 key={item}
-                className="group bg-white p-8 rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 border border-border/50"
+                className="bg-white p-8 rounded-xl border border-border"
               >
                 <div className="flex items-center mb-6">
-                  <div className="flex text-accent text-2xl">
+                  <div className="flex text-accent text-xl">
                     {[...Array(5)].map((_, i) => (
                       <span key={i}>★</span>
                     ))}
                   </div>
                 </div>
-                <p className="text-foreground mb-6 text-lg leading-relaxed">
-                  "OneTriage made it incredibly easy to connect with a doctor when I needed care. The platform is secure, user-friendly, and the providers are truly professional."
+                <p className="text-foreground mb-6 leading-relaxed">
+                  "OneTriage made it incredibly easy to connect with a healthcare provider when I needed care. The platform is secure, user-friendly, and the providers are truly professional."
                 </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-light flex items-center justify-center text-white font-bold text-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
                     P{item}
                   </div>
                   <div>
-                    <div className="font-bold text-foreground">Patient {item}</div>
-                    <div className="text-sm text-muted-foreground flex items-center gap-1">
-                      <Check className="h-4 w-4 text-success" /> Verified Patient
-                    </div>
+                    <div className="font-semibold text-foreground">Patient {item}</div>
+                    <div className="text-sm text-muted-foreground">Verified Patient</div>
                   </div>
                 </div>
               </div>
@@ -279,49 +258,37 @@ const HomePage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 md:py-32 bg-gradient-hero text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,107,53,0.3),transparent_70%)]"></div>
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="inline-block">
-              <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/30">
-                🚀 Start Your Journey Today
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-              Ready to Experience Healthcare
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent mt-2">
-                On Your Terms?
-              </span>
+      <section className="py-20 md:py-28 bg-primary text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+              Start Your Telemedicine Consultation Today
             </h2>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Join 50,000+ patients who trust OneTriage for convenient, secure, and professional healthcare access
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Join thousands of patients who trust OneTriage for convenient, secure, and professional healthcare consultations
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-              <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 shadow-xl hover:shadow-2xl transition-all duration-300 text-lg px-10 py-7 hover:scale-105">
-                <Link to="/contact">Get Started Free</Link>
+              <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-white shadow-lg text-base px-8 py-6">
+                <Link to="/contact">Schedule Consultation</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="bg-white/10 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white/20 text-lg px-10 py-7">
-                <Link to="/partner">For Healthcare Providers</Link>
+              <Button asChild variant="outline" size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/10 text-base px-8 py-6">
+                <Link to="/partner">Healthcare Provider Portal</Link>
               </Button>
             </div>
-            <div className="flex items-center justify-center gap-6 pt-8 text-white/80">
+            <div className="flex flex-wrap items-center justify-center gap-6 pt-8 text-white/70 text-sm">
               <div className="flex items-center gap-2">
-                <Shield className="h-5 w-5" />
+                <Shield className="h-4 w-4" />
                 <span>HIPAA Compliant</span>
               </div>
-              <div className="h-6 w-px bg-white/30"></div>
+              <div className="h-4 w-px bg-white/30"></div>
               <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
-                <span>24/7 Support</span>
+                <Clock className="h-4 w-4" />
+                <span>24/7 Availability</span>
               </div>
-              <div className="h-6 w-px bg-white/30"></div>
+              <div className="h-4 w-px bg-white/30"></div>
               <div className="flex items-center gap-2">
-                <Check className="h-5 w-5" />
-                <span>No Credit Card</span>
+                <Check className="h-4 w-4" />
+                <span>Secure Platform</span>
               </div>
             </div>
           </div>
