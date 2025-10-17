@@ -118,14 +118,15 @@ const ContactPage = () => {
           };
           console.log("n8n payload:", JSON.stringify(webhookPayload, null, 2));
           
-          const webhookResponse = await fetch(CONFIG.WEBHOOKS.CONTACT_FORM, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(webhookPayload)
-          });
+          // API call commented out
+          // const webhookResponse = await fetch(CONFIG.WEBHOOKS.CONTACT_FORM, {
+          //   method: "POST",
+          //   headers: { "Content-Type": "application/json" },
+          //   body: JSON.stringify(webhookPayload)
+          // });
           
-          console.log("n8n response status:", webhookResponse.status);
-          console.log("n8n response:", await webhookResponse.text());
+          // console.log("n8n response status:", webhookResponse.status);
+          // console.log("n8n response:", await webhookResponse.text());
         } catch (webhookError) {
           console.warn("n8n webhook notification failed:", webhookError);
           // Don't fail the form submission if webhook notification fails
@@ -146,17 +147,18 @@ const ContactPage = () => {
         source: "OneTriage Marketing Website",
       };
 
-      const response = await fetch(CONFIG.API_ENDPOINTS.CONTACT_SUBMIT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(apiPayload),
-      });
+      // API call commented out
+      // const response = await fetch(CONFIG.API_ENDPOINTS.CONTACT_SUBMIT, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(apiPayload),
+      // });
 
-      if (!response.ok) {
-        throw new Error(`API call failed with status ${response.status}`);
-      }
+      // if (!response.ok) {
+      //   throw new Error(`API call failed with status ${response.status}`);
+      // }
 
     
 
