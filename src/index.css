@@ -21,10 +21,13 @@ All colors MUST be HSL.
     /* Primary: Deep Blue (#1e3a5f) */
     --primary: 210 52% 24%;
     --primary-foreground: 0 0% 100%;
+    --primary-light: 210 52% 35%;
+    --primary-glow: 210 100% 65%;
     
     /* Secondary: Orange (#ff6b35) */
     --secondary: 14 100% 60%;
     --secondary-foreground: 0 0% 100%;
+    --secondary-light: 14 100% 70%;
     
     /* Accent: Yellow (#ffc107) */
     --accent: 45 100% 51%;
@@ -47,18 +50,24 @@ All colors MUST be HSL.
     --light-bg: 210 40% 98%;
     --icon-bg: 210 100% 95%;
     
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(210 52% 24%) 0%, hsl(210 52% 34%) 100%);
+    /* Modern Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(210 52% 24%) 0%, hsl(210 52% 35%) 50%, hsl(210 100% 40%) 100%);
     --gradient-cta: linear-gradient(135deg, hsl(14 100% 60%) 0%, hsl(14 100% 70%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 40% 99%) 100%);
     
-    /* Shadows */
+    /* Enhanced Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    --shadow-card: 0 4px 12px 0 rgb(30 58 95 / 0.08);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-card: 0 4px 20px 0 rgb(30 58 95 / 0.08);
+    --shadow-card-hover: 0 12px 40px 0 rgb(30 58 95 / 0.15);
+    --shadow-glow: 0 0 40px hsl(210 100% 65% / 0.3);
     
     /* Transitions */
     --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
