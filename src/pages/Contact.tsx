@@ -118,15 +118,14 @@ const ContactPage = () => {
           };
           console.log("n8n payload:", JSON.stringify(webhookPayload, null, 2));
           
-          // API call commented out
-          // const webhookResponse = await fetch(CONFIG.WEBHOOKS.CONTACT_FORM, {
-          //   method: "POST",
-          //   headers: { "Content-Type": "application/json" },
-          //   body: JSON.stringify(webhookPayload)
-          // });
+          const webhookResponse = await fetch(CONFIG.WEBHOOKS.CONTACT_FORM, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(webhookPayload)
+          });
           
-          // console.log("n8n response status:", webhookResponse.status);
-          // console.log("n8n response:", await webhookResponse.text());
+          console.log("n8n response status:", webhookResponse.status);
+          console.log("n8n response:", await webhookResponse.text());
         } catch (webhookError) {
           console.warn("n8n webhook notification failed:", webhookError);
           // Don't fail the form submission if webhook notification fails
