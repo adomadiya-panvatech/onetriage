@@ -2,7 +2,7 @@ import { useState, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, MapPin, Mail, Clock, Loader2 } from "lucide-react";
+import { Phone, MapPin, Mail, Clock, Loader2, Send, CheckCircle2, MessageSquare, Zap } from "lucide-react";
 import { formatPhoneNumber, validatePhone, validateEmail } from "@/utils/phoneFormatter";
 import { Lead } from "@/types/lead";
 import { CONFIG } from "@/config/constants";
@@ -189,37 +189,81 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-light-bg py-12">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Contact Us
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have questions? We're here to help 24/7
-          </p>
+    <div className="min-h-screen">
+      {/* Hero Header */}
+      <section className="relative bg-gradient-hero text-white py-20 md:py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         </div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+              <MessageSquare className="h-4 w-4" />
+              <span className="text-sm font-semibold">24/7 Support Available</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              Let's Get You
+              <span className="block bg-gradient-to-r from-secondary via-accent to-secondary bg-clip-text text-transparent mt-2">
+                Started Today
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+              Questions about our telemedicine services? Our team is ready to help you get the care you need.
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-6 pt-4">
+              <div className="flex items-center gap-2 text-white/90">
+                <CheckCircle2 className="h-5 w-5 text-accent" />
+                <span>Response within 24 hours</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/90">
+                <CheckCircle2 className="h-5 w-5 text-accent" />
+                <span>Free consultation</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/90">
+                <CheckCircle2 className="h-5 w-5 text-accent" />
+                <span>No obligation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20">
 
         <div className="grid lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
           {/* Left Column - Contact Form (60%) */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-xl shadow-card p-8">
-              <h2 className="text-2xl font-bold text-foreground mb-2">
-                Send Us a Message
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                Fill out the form below and we'll get back to you within 24 hours
-              </p>
+            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 border-2 border-border">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                  <Send className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-foreground">
+                    Send Us a Message
+                  </h2>
+                  <p className="text-muted-foreground">
+                    We typically respond within 1 hour during business hours
+                  </p>
+                </div>
+              </div>
 
               {showSuccess && (
-                <div className="mb-6 p-4 bg-success/10 border border-success/20 rounded-lg text-success">
-                  {successMessage}
+                <div className="mb-6 p-5 bg-gradient-to-r from-success/10 to-success/5 border-2 border-success/30 rounded-2xl text-success flex items-center gap-3">
+                  <CheckCircle2 className="h-6 w-6 flex-shrink-0" />
+                  <span className="font-semibold">{successMessage}</span>
                 </div>
               )}
 
               {errors.submit && (
-                <div className="mb-6 p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-destructive">
-                  {errors.submit}
+                <div className="mb-6 p-5 bg-gradient-to-r from-destructive/10 to-destructive/5 border-2 border-destructive/30 rounded-2xl text-destructive flex items-center gap-3">
+                  <Zap className="h-6 w-6 flex-shrink-0" />
+                  <span className="font-semibold">{errors.submit}</span>
                 </div>
               )}
 
@@ -328,19 +372,26 @@ const ContactPage = () => {
 
                 <Button
                   type="submit"
-                  className="w-full"
+                  className="w-full group bg-gradient-to-r from-primary to-primary-light hover:shadow-xl text-white"
                   size="lg"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Sending...
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Sending Your Message...
                     </>
                   ) : (
-                    "Send Inquiry"
+                    <>
+                      <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                      Send Message
+                    </>
                   )}
                 </Button>
+                
+                <p className="text-center text-sm text-muted-foreground mt-4">
+                  By submitting, you agree to our <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a> and <a href="/terms" className="text-primary hover:underline">Terms of Service</a>
+                </p>
               </form>
             </div>
           </div>
@@ -348,69 +399,84 @@ const ContactPage = () => {
           {/* Right Column - Contact Info Cards (40%) */}
           <div className="lg:col-span-2 space-y-6">
             {/* Call Us Card */}
-            <div className="bg-white rounded-xl shadow-card p-6 text-center">
-              <div className="bg-icon-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="h-8 w-8 text-primary" />
+            <div className="group bg-gradient-to-br from-white to-light-bg rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center border-2 border-border hover:border-primary">
+              <div className="relative mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-2xl blur group-hover:blur-xl transition-all"></div>
+                <div className="relative bg-gradient-to-br from-secondary to-accent w-20 h-20 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+                  <Phone className="h-10 w-10 text-white" />
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">Call Us</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Call Us Directly</h3>
               <a
                 href="tel:1-800-916-2459"
-                className="text-2xl font-bold text-secondary hover:text-secondary/80 transition-colors block mb-2"
+                className="text-3xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity block mb-3"
               >
                 1-800-916-2459
               </a>
-              <p className="text-sm text-muted-foreground">
-                Available 24/7 for emergencies
+              <p className="text-muted-foreground font-medium">
+                24/7 Emergency Support
               </p>
+              <div className="mt-4 inline-flex items-center gap-2 bg-success/10 text-success px-4 py-2 rounded-full text-sm font-semibold">
+                <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                Available Now
+              </div>
             </div>
 
             {/* Visit Us Card */}
-            <div className="bg-white rounded-xl shadow-card p-6 text-center">
-              <div className="bg-icon-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="h-8 w-8 text-primary" />
+            <div className="group bg-gradient-to-br from-white to-light-bg rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center border-2 border-border hover:border-primary">
+              <div className="relative mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-2xl blur group-hover:blur-xl transition-all"></div>
+                <div className="relative bg-gradient-to-br from-primary to-primary-light w-20 h-20 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+                  <MapPin className="h-10 w-10 text-white" />
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">Visit Us</h3>
-              <p className="text-muted-foreground mb-2">
+              <h3 className="text-2xl font-bold text-foreground mb-4">Visit Our Office</h3>
+              <p className="text-foreground font-semibold mb-1">
                 14269 Danielson St, Suite 400
-                <br />
+              </p>
+              <p className="text-muted-foreground mb-4">
                 Poway, CA 92064
               </p>
               <a
                 href="https://www.google.com/maps?q=14269+Danielson+St,+Suite+400,+Poway,+CA+92064"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-secondary hover:text-secondary/80 transition-colors font-medium text-sm inline-flex items-center"
+                className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors"
               >
-                Get Directions →
+                Get Directions
+                <MapPin className="h-4 w-4" />
               </a>
             </div>
 
             {/* Email Us Card */}
-            <div className="bg-white rounded-xl shadow-card p-6 text-center">
-              <div className="bg-icon-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail className="h-8 w-8 text-primary" />
+            <div className="group bg-gradient-to-br from-white to-light-bg rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center border-2 border-border hover:border-primary">
+              <div className="relative mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-2xl blur group-hover:blur-xl transition-all"></div>
+                <div className="relative bg-gradient-to-br from-accent to-secondary w-20 h-20 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+                  <Mail className="h-10 w-10 text-white" />
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">Email Us</h3>
-              <div className="space-y-3">
-                <div>
+              <h3 className="text-2xl font-bold text-foreground mb-6">Email Support</h3>
+              <div className="space-y-4">
+                <div className="bg-light-bg p-4 rounded-xl border border-border">
                   <a
-                    href="#"
-                    className="text-secondary hover:text-secondary/80 transition-colors font-semibold block"
+                    href={`mailto:${CONFIG.EMAILS.SUPPORT}`}
+                    className="text-primary hover:text-primary/80 transition-colors font-bold block text-lg"
                   >
                     {CONFIG.EMAILS.SUPPORT}
                   </a>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-sm text-muted-foreground mt-1">
                     Support & General Inquiries
                   </p>
                 </div>
-                <div>
+                <div className="bg-light-bg p-4 rounded-xl border border-border">
                   <a
-                    href="#"
-                    className="text-secondary hover:text-secondary/80 transition-colors font-semibold block"
+                    href={`mailto:${CONFIG.EMAILS.SALES}`}
+                    className="text-primary hover:text-primary/80 transition-colors font-bold block text-lg"
                   >
                     {CONFIG.EMAILS.SALES}
                   </a>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-sm text-muted-foreground mt-1">
                     Sales & Business Development
                   </p>
                 </div>
@@ -418,49 +484,69 @@ const ContactPage = () => {
             </div>
 
             {/* Business Hours Card */}
-            <div className="bg-white rounded-xl shadow-card p-6 text-center">
-              <div className="bg-icon-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8 text-primary" />
+            <div className="group bg-gradient-to-br from-primary to-primary-light text-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center">
+              <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Clock className="h-10 w-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
+              <h3 className="text-2xl font-bold mb-6">
                 Business Hours
               </h3>
-              <div className="text-muted-foreground text-sm space-y-1">
-                <p>Monday - Friday: 9:00 AM - 6:00 PM EST</p>
-                <p>Saturday - Sunday: Closed</p>
-                <p className="text-secondary font-medium text-xs mt-2">
-                  *24/7 Emergency Support Available
-                </p>
+              <div className="space-y-3">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <p className="font-semibold text-lg">Monday - Friday</p>
+                  <p className="text-white/90">9:00 AM - 6:00 PM EST</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <p className="font-semibold text-lg">Weekend</p>
+                  <p className="text-white/90">Closed</p>
+                </div>
+                <div className="bg-accent text-foreground rounded-xl p-4 font-bold text-sm">
+                  ⚡ 24/7 Emergency Support Available
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Map Section */}
-        <div className="mt-12 max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
-            Our Location
-          </h2>
-          <div className="bg-white rounded-xl shadow-card p-4">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.8!2d-117.0358!3d32.9628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc0c8b0e0c0c0b%3A0x0!2s14269%20Danielson%20St%2C%20Poway%2C%20CA%2092064!5e0!3m2!1sen!2sus!4v1234567890"
-              width="100%"
-              height="450"
-              style={{ border: 0, borderRadius: "0.75rem" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="OneTriage Office Location"
-              className="md:h-[450px] h-[350px]"
-            />
-            <div className="text-center mt-4">
+        <div className="mt-20 py-16 bg-gradient-to-b from-light-bg to-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                <MapPin className="h-4 w-4" />
+                Find Us
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Visit Our Office
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                We're located in the heart of Poway, California
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-3xl shadow-2xl p-4 border-2 border-border overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.8!2d-117.0358!3d32.9628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc0c8b0e0c0c0b%3A0x0!2s14269%20Danielson%20St%2C%20Poway%2C%20CA%2092064!5e0!3m2!1sen!2sus!4v1234567890"
+                width="100%"
+                height="500"
+                style={{ border: 0, borderRadius: "1.5rem" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="OneTriage Office Location - 14269 Danielson St, Suite 400, Poway, CA 92064"
+                className="md:h-[500px] h-[400px]"
+              />
+            </div>
+            
+            <div className="text-center mt-8">
               <a
                 href="https://www.google.com/maps?q=14269+Danielson+St,+Suite+400,+Poway,+CA+92064"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-secondary hover:text-secondary/80 transition-colors font-medium"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-light text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all hover:scale-105"
               >
-                View Larger Map →
+                <MapPin className="h-5 w-5" />
+                Open in Google Maps
               </a>
             </div>
           </div>
