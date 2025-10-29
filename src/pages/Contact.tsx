@@ -3,7 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Phone, MapPin, Mail, Clock, Loader2, Send, CheckCircle2 } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { Phone, MapPin, Mail, Clock, Loader2, Send, CheckCircle2, Calendar as CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 import { formatPhoneNumber, validatePhone, validateEmail } from "@/utils/phoneFormatter";
 import { Lead } from "@/types/lead";
 import { CONFIG } from "@/config/constants";
@@ -16,7 +20,7 @@ const ContactPage = () => {
     phone: "",
     company: "",
     referralSource: "",
-    preferredDemoDate: "",
+    preferredDemoDate: undefined as Date | undefined,
     preferredDemoTime: "",
     serviceInterest: "",
     message: "",
@@ -91,6 +95,10 @@ const ContactPage = () => {
         assigned_to: null,
       };
 
+      const formattedDemoDate = formData.preferredDemoDate 
+        ? format(formData.preferredDemoDate, "yyyy-MM-dd")
+        : null;
+
       // Log to console (matches database structure for future backend integration)
       console.log("=== CONTACT FORM SUBMISSION ===");
       console.log("Lead Data (for database):", leadData);
@@ -116,7 +124,7 @@ const ContactPage = () => {
               phone: leadData.phone,
               company: leadData.company || null,
               referralSource: formData.referralSource || null,
-              preferredDemoDate: formData.preferredDemoDate || null,
+              preferredDemoDate: formattedDemoDate,
               preferredDemoTime: formData.preferredDemoTime || null,
               serviceInterest: formData.serviceInterest,
               message: leadData.message,
@@ -180,7 +188,7 @@ const ContactPage = () => {
           phone: "",
           company: "",
           referralSource: "",
-          preferredDemoDate: "",
+          preferredDemoDate: undefined,
           preferredDemoTime: "",
           serviceInterest: "",
           message: "",
@@ -325,47 +333,75 @@ const ContactPage = () => {
                   </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Preferred Demo Date
-                    </label>
-                    <Input
-                      type="date"
-                      value={formData.preferredDemoDate}
-                      onChange={(e) =>
-                        setFormData({ ...formData, preferredDemoDate: e.target.value })
-                      }
-                      min={new Date().toISOString().split('T')[0]}
-                    />
-                    <p className="mt-1 text-xs text-muted-foreground">Optional - We'll confirm availability</p>
+                <div className="bg-accent/5 border border-accent/20 rounded-lg p-6 space-y-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <CalendarIcon className="h-5 w-5 text-accent" />
+                    <h3 className="text-lg font-semibold text-foreground">Schedule Your Demo</h3>
                   </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Preferred Demo Date
+                      </label>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "w-full justify-start text-left font-normal",
+                              !formData.preferredDemoDate && "text-muted-foreground"
+                            )}
+                          >
+                            <CalendarIcon className="mr-2 h-4 w-4" />
+                            {formData.preferredDemoDate ? (
+                              format(formData.preferredDemoDate, "PPP")
+                            ) : (
+                              <span>Pick a date (Optional)</span>
+                            )}
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={formData.preferredDemoDate}
+                            onSelect={(date) => setFormData({ ...formData, preferredDemoDate: date })}
+                            disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+                            initialFocus
+                            className="pointer-events-auto"
+                          />
+                        </PopoverContent>
+                      </Popover>
+                      <p className="mt-1 text-xs text-muted-foreground">We'll confirm availability</p>
+                    </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Preferred Demo Time
-                    </label>
-                    <Select
-                      value={formData.preferredDemoTime}
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, preferredDemoTime: value })
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select time (Optional)" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="9:00 AM - 10:00 AM EST">9:00 AM - 10:00 AM EST</SelectItem>
-                        <SelectItem value="10:00 AM - 11:00 AM EST">10:00 AM - 11:00 AM EST</SelectItem>
-                        <SelectItem value="11:00 AM - 12:00 PM EST">11:00 AM - 12:00 PM EST</SelectItem>
-                        <SelectItem value="12:00 PM - 1:00 PM EST">12:00 PM - 1:00 PM EST</SelectItem>
-                        <SelectItem value="1:00 PM - 2:00 PM EST">1:00 PM - 2:00 PM EST</SelectItem>
-                        <SelectItem value="2:00 PM - 3:00 PM EST">2:00 PM - 3:00 PM EST</SelectItem>
-                        <SelectItem value="3:00 PM - 4:00 PM EST">3:00 PM - 4:00 PM EST</SelectItem>
-                        <SelectItem value="4:00 PM - 5:00 PM EST">4:00 PM - 5:00 PM EST</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <p className="mt-1 text-xs text-muted-foreground">Eastern Standard Time</p>
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Preferred Demo Time
+                      </label>
+                      <Select
+                        value={formData.preferredDemoTime}
+                        onValueChange={(value) =>
+                          setFormData({ ...formData, preferredDemoTime: value })
+                        }
+                      >
+                        <SelectTrigger className="w-full">
+                          <Clock className="mr-2 h-4 w-4" />
+                          <SelectValue placeholder="Select time (Optional)" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="9:00 AM - 10:00 AM EST">9:00 AM - 10:00 AM EST</SelectItem>
+                          <SelectItem value="10:00 AM - 11:00 AM EST">10:00 AM - 11:00 AM EST</SelectItem>
+                          <SelectItem value="11:00 AM - 12:00 PM EST">11:00 AM - 12:00 PM EST</SelectItem>
+                          <SelectItem value="12:00 PM - 1:00 PM EST">12:00 PM - 1:00 PM EST</SelectItem>
+                          <SelectItem value="1:00 PM - 2:00 PM EST">1:00 PM - 2:00 PM EST</SelectItem>
+                          <SelectItem value="2:00 PM - 3:00 PM EST">2:00 PM - 3:00 PM EST</SelectItem>
+                          <SelectItem value="3:00 PM - 4:00 PM EST">3:00 PM - 4:00 PM EST</SelectItem>
+                          <SelectItem value="4:00 PM - 5:00 PM EST">4:00 PM - 5:00 PM EST</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <p className="mt-1 text-xs text-muted-foreground">Eastern Standard Time</p>
+                    </div>
                   </div>
                 </div>
 
