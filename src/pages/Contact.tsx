@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Phone, MapPin, Mail, Clock, Loader2, Send, CheckCircle2 } from "lucide-react";
 import { formatPhoneNumber, validatePhone, validateEmail } from "@/utils/phoneFormatter";
 import { Lead } from "@/types/lead";
@@ -344,23 +345,26 @@ const ContactPage = () => {
                     <label className="block text-sm font-medium text-foreground mb-2">
                       Preferred Demo Time
                     </label>
-                    <select
+                    <Select
                       value={formData.preferredDemoTime}
-                      onChange={(e) =>
-                        setFormData({ ...formData, preferredDemoTime: e.target.value })
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, preferredDemoTime: value })
                       }
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                      <option value="">Select time (Optional)</option>
-                      <option value="9:00 AM - 10:00 AM EST">9:00 AM - 10:00 AM EST</option>
-                      <option value="10:00 AM - 11:00 AM EST">10:00 AM - 11:00 AM EST</option>
-                      <option value="11:00 AM - 12:00 PM EST">11:00 AM - 12:00 PM EST</option>
-                      <option value="12:00 PM - 1:00 PM EST">12:00 PM - 1:00 PM EST</option>
-                      <option value="1:00 PM - 2:00 PM EST">1:00 PM - 2:00 PM EST</option>
-                      <option value="2:00 PM - 3:00 PM EST">2:00 PM - 3:00 PM EST</option>
-                      <option value="3:00 PM - 4:00 PM EST">3:00 PM - 4:00 PM EST</option>
-                      <option value="4:00 PM - 5:00 PM EST">4:00 PM - 5:00 PM EST</option>
-                    </select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select time (Optional)" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="9:00 AM - 10:00 AM EST">9:00 AM - 10:00 AM EST</SelectItem>
+                        <SelectItem value="10:00 AM - 11:00 AM EST">10:00 AM - 11:00 AM EST</SelectItem>
+                        <SelectItem value="11:00 AM - 12:00 PM EST">11:00 AM - 12:00 PM EST</SelectItem>
+                        <SelectItem value="12:00 PM - 1:00 PM EST">12:00 PM - 1:00 PM EST</SelectItem>
+                        <SelectItem value="1:00 PM - 2:00 PM EST">1:00 PM - 2:00 PM EST</SelectItem>
+                        <SelectItem value="2:00 PM - 3:00 PM EST">2:00 PM - 3:00 PM EST</SelectItem>
+                        <SelectItem value="3:00 PM - 4:00 PM EST">3:00 PM - 4:00 PM EST</SelectItem>
+                        <SelectItem value="4:00 PM - 5:00 PM EST">4:00 PM - 5:00 PM EST</SelectItem>
+                      </SelectContent>
+                    </Select>
                     <p className="mt-1 text-xs text-muted-foreground">Eastern Standard Time</p>
                   </div>
                 </div>
