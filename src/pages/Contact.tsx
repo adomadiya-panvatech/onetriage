@@ -15,6 +15,8 @@ const ContactPage = () => {
     phone: "",
     company: "",
     referralSource: "",
+    preferredDemoDate: "",
+    preferredDemoTime: "",
     serviceInterest: "",
     message: "",
   });
@@ -113,6 +115,8 @@ const ContactPage = () => {
               phone: leadData.phone,
               company: leadData.company || null,
               referralSource: formData.referralSource || null,
+              preferredDemoDate: formData.preferredDemoDate || null,
+              preferredDemoTime: formData.preferredDemoTime || null,
               serviceInterest: formData.serviceInterest,
               message: leadData.message,
               source: "OneTriage Marketing Website",
@@ -165,7 +169,7 @@ const ContactPage = () => {
 
       // Show success message
       setShowSuccess(true);
-      setSuccessMessage("Thank you! Your message has been sent successfully. We'll respond within 24 hours.");
+      setSuccessMessage("Thank you! Your demo request has been submitted. Our team will contact you within 24 hours to confirm your personalized demo.");
 
       // Reset form after 3 seconds
       setTimeout(() => {
@@ -175,6 +179,8 @@ const ContactPage = () => {
           phone: "",
           company: "",
           referralSource: "",
+          preferredDemoDate: "",
+          preferredDemoTime: "",
           serviceInterest: "",
           message: "",
         });
@@ -202,7 +208,7 @@ const ContactPage = () => {
               Contact Us
             </h1>
             <p className="text-xl text-white/90">
-              We're here to help 24/7. Get in touch with our team for support, inquiries, or to schedule a consultation.
+              We're here to help 24/7. Schedule a personalized demo of our AI-driven patient triage and referral management platform.
             </p>
           </div>
         </div>
@@ -215,10 +221,10 @@ const ContactPage = () => {
           <div className="lg:col-span-3">
             <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-border">
               <h2 className="text-2xl font-bold text-foreground mb-2">
-                Send Us a Message
+                Schedule Your Demo
               </h2>
               <p className="text-muted-foreground mb-6">
-                Fill out the form below and we'll get back to you within 24 hours
+                Fill out the form below and our team will contact you within 24 hours to schedule your personalized demo
               </p>
 
               {showSuccess && (
@@ -318,13 +324,54 @@ const ContactPage = () => {
                   </p>
                 </div>
 
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Preferred Demo Date
+                    </label>
+                    <Input
+                      type="date"
+                      value={formData.preferredDemoDate}
+                      onChange={(e) =>
+                        setFormData({ ...formData, preferredDemoDate: e.target.value })
+                      }
+                      min={new Date().toISOString().split('T')[0]}
+                    />
+                    <p className="mt-1 text-xs text-muted-foreground">Optional - We'll confirm availability</p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Preferred Demo Time
+                    </label>
+                    <select
+                      value={formData.preferredDemoTime}
+                      onChange={(e) =>
+                        setFormData({ ...formData, preferredDemoTime: e.target.value })
+                      }
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <option value="">Select time (Optional)</option>
+                      <option value="9:00 AM - 10:00 AM EST">9:00 AM - 10:00 AM EST</option>
+                      <option value="10:00 AM - 11:00 AM EST">10:00 AM - 11:00 AM EST</option>
+                      <option value="11:00 AM - 12:00 PM EST">11:00 AM - 12:00 PM EST</option>
+                      <option value="12:00 PM - 1:00 PM EST">12:00 PM - 1:00 PM EST</option>
+                      <option value="1:00 PM - 2:00 PM EST">1:00 PM - 2:00 PM EST</option>
+                      <option value="2:00 PM - 3:00 PM EST">2:00 PM - 3:00 PM EST</option>
+                      <option value="3:00 PM - 4:00 PM EST">3:00 PM - 4:00 PM EST</option>
+                      <option value="4:00 PM - 5:00 PM EST">4:00 PM - 5:00 PM EST</option>
+                    </select>
+                    <p className="mt-1 text-xs text-muted-foreground">Eastern Standard Time</p>
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Service Interest <span className="text-destructive">*</span>
                   </label>
                   <Input
                     type="text"
-                    placeholder="e.g., Healthcare IT Solutions, Telemedicine, etc."
+                    placeholder="e.g., AI Patient Triage, Referral Management, Provider Network"
                     value={formData.serviceInterest}
                     onChange={(e) =>
                       setFormData({ ...formData, serviceInterest: e.target.value })
