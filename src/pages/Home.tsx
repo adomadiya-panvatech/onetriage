@@ -26,14 +26,19 @@ const HomePage = () => {
       description: "Intelligent symptom assessment and priority classification in seconds. 60% reduction in wait times."
     },
     {
+      icon: Users2,
+      title: "Intelligent Referral Management",
+      description: "Streamline specialist referrals with automated tracking, coordination, and network matching."
+    },
+    {
       icon: FileText,
       title: "Automated Document Collection",
       description: "Smart intake forms with OCR technology extract data automatically. Reduce check-in time by 75%."
     },
     {
       icon: Workflow,
-      title: "Intelligent Workflow Automation",
-      description: "Smart scheduling, reminders, and follow-ups - all automated. Free your staff for patient care."
+      title: "Referral Network & Workflow Automation",
+      description: "Connect patients to provider networks with smart scheduling, reminders, and automated follow-ups."
     },
     {
       icon: Shield,
@@ -61,13 +66,17 @@ const HomePage = () => {
   ];
 
   const benefits = [
+    "Automated specialist referral tracking and coordination",
+    "Referral-based patient acquisition through provider network",
+    "Intelligent provider network matching and routing",
+    "B2B partner and reseller growth engine",
     "60% reduction in patient wait times",
     "40% improvement in resource allocation",
     "99.2% accuracy in urgency classification",
     "24/7 automated patient assessment",
     "Seamless EHR integration (Epic, Cerner, Allscripts)",
     "30-50% reduction in administrative costs",
-    "75% faster patient check-in process",
+    "75% faster referral processing time",
     "HIPAA-compliant with SOC 2 Type II certification",
   ];
 
@@ -80,28 +89,28 @@ const HomePage = () => {
 
   const faqs = [
     {
-      question: "What is AI-driven patient triage?",
-      answer: "AI-driven patient triage uses advanced machine learning algorithms to automatically assess patient symptoms, prioritize cases based on urgency, and route patients to the appropriate care providers. OneTriage's intelligent system reduces wait times by 60% while ensuring critical cases receive immediate attention."
+      question: "What makes OneTriage a comprehensive referral ecosystem?",
+      answer: "OneTriage uniquely combines four critical healthcare functions: (1) AI-driven patient triage for symptom assessment, (2) Automated referral management for specialist coordination, (3) Provider network matching to connect patients with trusted specialists, and (4) B2B partner/reseller network for scalable growth. This comprehensive approach reduces wait times by 60% while streamlining the entire referral lifecycle."
     },
     {
-      question: "How does OneTriage improve healthcare efficiency?",
-      answer: "OneTriage automates time-consuming manual processes including patient intake, document collection, symptom assessment, and appointment scheduling. Healthcare providers report a 40% improvement in resource allocation and significant reduction in administrative burden, allowing staff to focus on delivering exceptional patient care."
+      question: "How does OneTriage handle specialist referrals?",
+      answer: "OneTriage's intelligent referral management system automates the entire specialist referral process—from initial referral creation, to specialist matching based on expertise and availability, to appointment coordination and follow-up tracking. The platform maintains complete visibility throughout the referral journey, reducing referral processing time by 75% and preventing patients from falling through the cracks."
+    },
+    {
+      question: "What is the OneTriage provider network?",
+      answer: "The OneTriage provider network is a vetted ecosystem of healthcare specialists and providers. When a patient needs specialty care, our intelligent matching algorithm connects them with the most appropriate specialist based on clinical needs, geographic location, insurance acceptance, and availability. Providers benefit from qualified referrals while patients receive faster access to appropriate care."
+    },
+    {
+      question: "How does the B2B partner/reseller model work?",
+      answer: "OneTriage partners with healthcare technology resellers, consulting firms, and healthcare systems to expand market reach. Partners refer healthcare organizations to OneTriage and can offer white-label solutions to their clients. Our partner program includes revenue sharing, co-marketing support, and dedicated technical assistance to ensure successful client implementations."
     },
     {
       question: "Is OneTriage HIPAA compliant?",
-      answer: "Yes, OneTriage is fully HIPAA compliant with enterprise-grade encryption, secure data transmission, and comprehensive audit trails. All patient data is protected according to federal healthcare regulations with TLS 1.2+ encryption in transit and AES-256 encryption at rest."
-    },
-    {
-      question: "How long does it take to implement OneTriage?",
-      answer: "Implementation typically takes 2-4 weeks depending on your existing systems and integration requirements. Our team provides full support throughout the onboarding process, including EHR integration, staff training, and workflow optimization."
+      answer: "Yes, OneTriage is fully HIPAA compliant with enterprise-grade encryption, secure data transmission, and comprehensive audit trails. All patient data and referral information is protected according to federal healthcare regulations with TLS 1.2+ encryption in transit and AES-256 encryption at rest."
     },
     {
       question: "Can OneTriage integrate with our existing EHR system?",
-      answer: "Yes, OneTriage offers seamless integration with major EHR systems including Epic, Cerner, Allscripts, and more. Our API-first architecture ensures smooth data flow between systems without disrupting your existing workflows."
-    },
-    {
-      question: "How much can hospitals save with triage automation?",
-      answer: "Healthcare organizations typically see 30-50% reduction in administrative costs, improved patient throughput, and better resource utilization within the first 6 months of implementation. The average ROI is achieved within 8-12 months."
+      answer: "Yes, OneTriage offers seamless integration with major EHR systems including Epic, Cerner, Allscripts, and more. Our API-first architecture ensures smooth bidirectional data flow for patient demographics, referral orders, and clinical documentation without disrupting your existing workflows."
     },
   ];
 
@@ -141,12 +150,12 @@ const HomePage = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 AI-Driven Patient Triage
                 <span className="block text-secondary mt-2">
-                  That Transforms Healthcare Delivery
+                  & Intelligent Referral Management
                 </span>
               </h1>
               
               <p className="text-xl text-white/90 leading-relaxed">
-                Reduce wait times by 60% and improve patient outcomes with intelligent automation. OneTriage streamlines patient onboarding, clinical workflows, and communication—so you can focus on exceptional care.
+                Comprehensive healthcare referral ecosystem that combines AI-powered patient triage, automated referral management, provider network coordination, and partner-driven growth. Reduce wait times by 60% and streamline specialist referrals.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -221,7 +230,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-lg text-foreground leading-relaxed">
-              OneTriage revolutionizes healthcare with <strong>intelligent, AI-powered patient triage</strong> that automatically assesses symptoms, prioritizes cases, and routes patients to appropriate care providers. Our <strong>HIPAA-compliant platform</strong> integrates seamlessly with your existing EHR system, providing <strong>24/7 automated patient assessment</strong> while reducing administrative burden by up to 50%.
+              OneTriage is a <strong>comprehensive healthcare referral ecosystem</strong> that combines <strong>intelligent, AI-powered patient triage</strong> with <strong>automated referral management</strong> and <strong>provider network coordination</strong>. Our <strong>HIPAA-compliant platform</strong> streamlines specialist referrals, manages referral-based patient flow, connects patients to trusted provider networks, and powers partner-driven growth—all while providing <strong>24/7 automated patient assessment</strong> and reducing administrative burden by up to 50%.
             </p>
           </div>
         </div>
@@ -232,14 +241,14 @@ const HomePage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              What's Included in OneTriage
+              Complete Healthcare Referral Ecosystem
             </h2>
             <p className="text-lg text-muted-foreground">
-              Comprehensive healthcare automation platform built for modern healthcare delivery
+              AI-powered triage, referral management, provider networks, and partner growth—all in one platform
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
             {keyFeatures.map((feature, index) => (
               <div
                 key={index}
@@ -260,45 +269,52 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Feature Detail: AI-Driven Patient Triage */}
+      {/* Feature Detail: Comprehensive Referral Ecosystem */}
       <section className="py-20 md:py-28 bg-light-bg">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                  What is AI-Driven Patient Triage?
+                  Comprehensive Healthcare Referral Platform
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  OneTriage's <strong>AI-driven patient triage</strong> uses advanced machine learning algorithms trained on millions of clinical cases to automatically assess patient symptoms and determine urgency levels. The system analyzes patient-reported symptoms, medical history, and vital signs to provide accurate triage recommendations in seconds—not minutes or hours.
+                  OneTriage is the only platform that combines <strong>AI-driven patient triage</strong>, <strong>intelligent referral management</strong>, <strong>provider network coordination</strong>, and <strong>B2B partner growth</strong> in one seamless ecosystem. Our advanced machine learning algorithms automatically assess patient symptoms, route referrals to specialists, connect patients with trusted provider networks, and power partner-driven expansion.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-6 w-6 text-success flex-shrink-0 mt-1" />
                     <div>
-                      <div className="font-semibold text-foreground mb-1">60% reduction in patient wait times</div>
-                      <div className="text-sm text-muted-foreground">Automated assessment eliminates bottlenecks</div>
+                      <div className="font-semibold text-foreground mb-1">Automated Specialist Referral Management</div>
+                      <div className="text-sm text-muted-foreground">Track, coordinate, and manage referrals to specialists seamlessly</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-6 w-6 text-success flex-shrink-0 mt-1" />
                     <div>
-                      <div className="font-semibold text-foreground mb-1">99.2% accuracy in urgency classification</div>
-                      <div className="text-sm text-muted-foreground">Trained on millions of verified clinical cases</div>
+                      <div className="font-semibold text-foreground mb-1">Referral-Based Patient Acquisition</div>
+                      <div className="text-sm text-muted-foreground">Grow through trusted provider referrals and network partnerships</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-6 w-6 text-success flex-shrink-0 mt-1" />
                     <div>
-                      <div className="font-semibold text-foreground mb-1">24/7 automated assessment without staff intervention</div>
-                      <div className="text-sm text-muted-foreground">Always available, never fatigues</div>
+                      <div className="font-semibold text-foreground mb-1">Provider Network Coordination</div>
+                      <div className="text-sm text-muted-foreground">Connect patients to vetted specialist networks with intelligent matching</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-6 w-6 text-success flex-shrink-0 mt-1" />
                     <div>
-                      <div className="font-semibold text-foreground mb-1">Seamless integration with major EHR systems</div>
-                      <div className="text-sm text-muted-foreground">Works with Epic, Cerner, Allscripts, and more</div>
+                      <div className="font-semibold text-foreground mb-1">B2B Partner & Reseller Network</div>
+                      <div className="text-sm text-muted-foreground">Scale through partner-driven referrals and white-label solutions</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-6 w-6 text-success flex-shrink-0 mt-1" />
+                    <div>
+                      <div className="font-semibold text-foreground mb-1">60% reduction in wait times + 99.2% triage accuracy</div>
+                      <div className="text-sm text-muted-foreground">AI-powered efficiency across the entire referral lifecycle</div>
                     </div>
                   </div>
                 </div>
@@ -306,19 +322,19 @@ const HomePage = () => {
               <div className="bg-white p-8 rounded-2xl shadow-card">
                 <div className="space-y-6">
                   <div className="bg-primary/5 p-6 rounded-xl">
-                    <HeartPulse className="h-12 w-12 text-primary mb-4" />
-                    <h3 className="text-xl font-bold text-foreground mb-2">Intelligent Symptom Analysis</h3>
-                    <p className="text-muted-foreground text-sm">Advanced NLP understands patient descriptions in natural language</p>
+                    <Users2 className="h-12 w-12 text-primary mb-4" />
+                    <h3 className="text-xl font-bold text-foreground mb-2">Referral Management Hub</h3>
+                    <p className="text-muted-foreground text-sm">Track specialist referrals, coordinate care transitions, and manage network relationships</p>
                   </div>
                   <div className="bg-secondary/5 p-6 rounded-xl">
                     <Zap className="h-12 w-12 text-secondary mb-4" />
-                    <h3 className="text-xl font-bold text-foreground mb-2">Real-Time Priority Routing</h3>
-                    <p className="text-muted-foreground text-sm">Automatically routes urgent cases to available providers immediately</p>
+                    <h3 className="text-xl font-bold text-foreground mb-2">Provider Network Matching</h3>
+                    <p className="text-muted-foreground text-sm">Intelligently connect patients to trusted specialists based on needs and availability</p>
                   </div>
                   <div className="bg-accent/5 p-6 rounded-xl">
                     <TrendingUp className="h-12 w-12 text-accent mb-4" />
-                    <h3 className="text-xl font-bold text-foreground mb-2">Continuous Learning</h3>
-                    <p className="text-muted-foreground text-sm">AI improves accuracy with every assessment</p>
+                    <h3 className="text-xl font-bold text-foreground mb-2">Partner-Driven Growth</h3>
+                    <p className="text-muted-foreground text-sm">B2B reseller network and referral partnerships accelerate market expansion</p>
                   </div>
                 </div>
               </div>

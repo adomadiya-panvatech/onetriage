@@ -14,6 +14,7 @@ const ContactPage = () => {
     email: "",
     phone: "",
     company: "",
+    referralSource: "",
     serviceInterest: "",
     message: "",
   });
@@ -111,6 +112,7 @@ const ContactPage = () => {
               email: leadData.email,
               phone: leadData.phone,
               company: leadData.company || null,
+              referralSource: formData.referralSource || null,
               serviceInterest: formData.serviceInterest,
               message: leadData.message,
               source: "OneTriage Marketing Website",
@@ -172,6 +174,7 @@ const ContactPage = () => {
           email: "",
           phone: "",
           company: "",
+          referralSource: "",
           serviceInterest: "",
           message: "",
         });
@@ -296,6 +299,23 @@ const ContactPage = () => {
                       setFormData({ ...formData, company: e.target.value })
                     }
                   />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    How Did You Hear About Us?
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="e.g., Provider Referral, Partner Network, Web Search (Optional)"
+                    value={formData.referralSource}
+                    onChange={(e) =>
+                      setFormData({ ...formData, referralSource: e.target.value })
+                    }
+                  />
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Help us understand your referral source
+                  </p>
                 </div>
 
                 <div>
