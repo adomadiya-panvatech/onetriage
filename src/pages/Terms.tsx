@@ -58,7 +58,17 @@ const TermsPage = () => {
         "These Terms and Conditions shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law provisions. Any disputes arising from these terms shall be resolved in the courts located in San Diego County, California.",
     },
     {
-      title: "12. Changes to Terms",
+      title: "12. Demo and Trial Terms",
+      content:
+        "Demos and trials of our platform are offered for evaluation purposes only. Demo accounts are temporary and may have limited functionality. Information provided during demos is for illustrative purposes. By scheduling a demo, you consent to being contacted by our sales team via email, phone, or automated messaging systems.",
+    },
+    {
+      title: "13. Indemnification",
+      content:
+        "You agree to indemnify, defend, and hold harmless OneTriage, its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses arising from your violation of these terms, your use of the platform, or your violation of any rights of another party.",
+    },
+    {
+      title: "14. Changes to Terms",
       content:
         "We reserve the right to modify these Terms and Conditions at any time. Changes will be effective immediately upon posting to the platform. We will notify you of significant changes via email or platform notification. Your continued use of OneTriage after changes constitutes acceptance of the updated terms.",
     },
@@ -123,7 +133,14 @@ const TermsPage = () => {
               </div>
             </div>
 
-            <div className="mt-8 p-6 bg-accent/10 border border-accent/20 rounded-lg">
+            <div className="mt-8 p-6 bg-destructive/10 border border-destructive/20 rounded-lg">
+              <h3 className="font-semibold text-foreground mb-2">⚠️ Medical Emergency Disclaimer</h3>
+              <p className="text-sm text-foreground">
+                <strong>OneTriage is NOT for medical emergencies.</strong> If you are experiencing a medical emergency, call 911 or go to your nearest emergency room immediately. Do not rely on telemedicine services for emergency medical situations.
+              </p>
+            </div>
+
+            <div className="mt-6 p-6 bg-accent/10 border border-accent/20 rounded-lg">
               <p className="text-sm text-foreground">
                 <strong>Important:</strong> By using OneTriage, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. If you do not agree, you must discontinue use of our services immediately.
               </p>

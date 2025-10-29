@@ -6,6 +6,14 @@ const PrivacyPolicyPage = () => {
       title: "1. Information We Collect",
       content: [
         {
+          subtitle: "Contact Form Data",
+          text: "When you submit our contact or demo request forms, we collect your full name, email address, phone number, company name, preferred demo date/time, and any messages or comments you provide.",
+        },
+        {
+          subtitle: "Partner Application Data",
+          text: "For partnership inquiries, we collect company information, contact details, geographic region, partnership type interest, current patient volume, and additional information about your organization.",
+        },
+        {
           subtitle: "Personal Information",
           text: "We collect information such as your name, email address, phone number, date of birth, and insurance information when you register for our services.",
         },
@@ -27,6 +35,14 @@ const PrivacyPolicyPage = () => {
       title: "2. How We Use Your Information",
       content: [
         {
+          subtitle: "Lead Management & Follow-up",
+          text: "Information from contact and partner forms is used to qualify leads, schedule demos, and follow up on inquiries. Our team uses n8n workflow automation to route inquiries to the appropriate team members via Microsoft Teams notifications.",
+        },
+        {
+          subtitle: "Demo Scheduling & Coordination",
+          text: "When you provide a preferred demo date and time, we use this information to coordinate personalized demonstrations of our platform. Automated workflows send calendar invites and reminders to ensure smooth scheduling.",
+        },
+        {
           subtitle: "Service Delivery",
           text: "We use your information to facilitate telemedicine consultations, connect you with healthcare providers, and maintain your health records.",
         },
@@ -36,7 +52,7 @@ const PrivacyPolicyPage = () => {
         },
         {
           subtitle: "Communications",
-          text: "We may send you appointment reminders, health information, platform updates, and marketing communications (which you can opt out of).",
+          text: "We may send you appointment reminders, health information, platform updates, demo follow-ups, and marketing communications (which you can opt out of at any time).",
         },
         {
           subtitle: "Legal Compliance",
@@ -48,12 +64,16 @@ const PrivacyPolicyPage = () => {
       title: "3. Data Sharing and Disclosure",
       content: [
         {
+          subtitle: "Internal Workflow Automation",
+          text: "We use n8n workflow automation to process form submissions and route them to our sales and partnership teams via Microsoft Teams. This ensures timely response to your inquiries.",
+        },
+        {
           subtitle: "Healthcare Providers",
           text: "We share necessary information with healthcare providers involved in your care to ensure continuity and quality of treatment.",
         },
         {
           subtitle: "Service Providers",
-          text: "We work with trusted third-party service providers who assist with platform operations, payment processing, and technical support.",
+          text: "We work with trusted third-party service providers who assist with platform operations, payment processing, technical support, analytics, and workflow automation (including n8n and Microsoft Teams).",
         },
         {
           subtitle: "Legal Requirements",
@@ -99,11 +119,32 @@ const PrivacyPolicyPage = () => {
         },
         {
           subtitle: "Data Deletion",
-          text: "You may request deletion of your data, subject to legal and regulatory retention requirements.",
+          text: "You may request deletion of your data, subject to legal and regulatory retention requirements (including HIPAA requirements for medical records).",
         },
         {
           subtitle: "Opt-Out",
-          text: "You can opt out of marketing communications at any time while still receiving essential service-related messages.",
+          text: "You can opt out of marketing communications at any time while still receiving essential service-related messages such as demo confirmations and appointment reminders.",
+        },
+        {
+          subtitle: "Data Portability",
+          text: "You have the right to receive your data in a structured, commonly used format and to transmit it to another service provider.",
+        },
+      ],
+    },
+    {
+      title: "6. Data Retention",
+      content: [
+        {
+          subtitle: "Contact & Lead Data",
+          text: "Information submitted through contact and partner forms is retained for legitimate business purposes including lead follow-up, demo scheduling, and relationship management. You may request deletion at any time.",
+        },
+        {
+          subtitle: "Medical Records",
+          text: "Healthcare records are retained according to HIPAA requirements and applicable state laws, typically for a minimum of 6-7 years from the last date of service.",
+        },
+        {
+          subtitle: "Automated Deletion",
+          text: "We automatically delete certain temporary data (such as session cookies) after specified retention periods. Marketing data is deleted upon opt-out request.",
         },
       ],
     },
@@ -167,7 +208,14 @@ const PrivacyPolicyPage = () => {
               </div>
             </div>
 
-            <div className="mt-8 p-6 bg-accent/10 border border-accent/20 rounded-lg">
+            <div className="mt-8 p-6 bg-primary/10 border border-primary/20 rounded-lg">
+              <h3 className="font-semibold text-foreground mb-2">Your Privacy Rights</h3>
+              <p className="text-sm text-foreground mb-3">
+                To exercise any of your privacy rights, including access, correction, deletion, or opt-out requests, please contact our Privacy Officer at the email address above. We will respond to your request within 30 days.
+              </p>
+            </div>
+
+            <div className="mt-6 p-6 bg-accent/10 border border-accent/20 rounded-lg">
               <p className="text-sm text-foreground">
                 <strong>Note:</strong> This Privacy Policy may be updated periodically. We will notify you of significant changes through our platform or via email. Your continued use of OneTriage after changes constitutes acceptance of the updated policy.
               </p>

@@ -91,58 +91,69 @@ const AccessibilityPage = () => {
             {/* Data Collection Notice */}
             <section>
               <h2 className="text-2xl font-bold text-foreground mb-4">
-                Data Collection Notice
+                Information Collection & Processing Notice
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                OneTriage collects and processes information to provide telemedicine services. This notice explains what data we collect, why we collect it, and how you can control it.
+                OneTriage collects and processes information to provide telemedicine services, manage leads, schedule demos, and facilitate partnerships. This comprehensive notice explains what data we collect, why we collect it, and how you can control it.
               </p>
               
               <div className="space-y-4">
                 <div className="bg-light-bg p-6 rounded-lg">
                   <h3 className="font-semibold text-foreground mb-2">What We Collect</h3>
                   <ul className="text-sm text-muted-foreground space-y-2 list-disc list-inside">
-                    <li>Personal identification information (name, email, phone, date of birth)</li>
-                    <li>Health and medical information necessary for consultations</li>
-                    <li>Insurance and payment information</li>
-                    <li>Technical data (IP address, browser type, device information)</li>
-                    <li>Usage data (pages visited, features used, session duration)</li>
+                    <li><strong>Contact Form Data:</strong> Name, email, phone, company, preferred demo date/time, messages</li>
+                    <li><strong>Partner Application Data:</strong> Company information, contact details, partnership type, patient volume</li>
+                    <li><strong>Personal Information:</strong> Name, email, phone, date of birth (for service users)</li>
+                    <li><strong>Health Information:</strong> Medical information necessary for consultations (HIPAA protected)</li>
+                    <li><strong>Payment Information:</strong> Insurance and billing details for service processing</li>
+                    <li><strong>Technical Data:</strong> IP address, browser type, device information, operating system</li>
+                    <li><strong>Usage Analytics:</strong> Pages visited, features used, session duration, interaction patterns</li>
                   </ul>
                 </div>
 
                 <div className="bg-light-bg p-6 rounded-lg">
                   <h3 className="font-semibold text-foreground mb-2">Why We Collect It</h3>
                   <ul className="text-sm text-muted-foreground space-y-2 list-disc list-inside">
-                    <li>To facilitate telemedicine consultations and provide healthcare services</li>
-                    <li>To maintain accurate health records and treatment history</li>
-                    <li>To process payments and insurance claims</li>
-                    <li>To improve platform performance and user experience</li>
-                    <li>To comply with legal and regulatory requirements</li>
+                    <li><strong>Lead Qualification:</strong> To assess fit and route inquiries to appropriate team members</li>
+                    <li><strong>Demo Scheduling:</strong> To coordinate personalized product demonstrations at your convenience</li>
+                    <li><strong>Healthcare Services:</strong> To facilitate telemedicine consultations and provide care</li>
+                    <li><strong>Record Management:</strong> To maintain accurate health records and treatment history</li>
+                    <li><strong>Payment Processing:</strong> To process payments and insurance claims securely</li>
+                    <li><strong>Platform Improvement:</strong> To enhance performance, features, and user experience</li>
+                    <li><strong>Compliance:</strong> To meet HIPAA, legal, and regulatory requirements</li>
                   </ul>
                 </div>
 
                 <div className="bg-light-bg p-6 rounded-lg">
                   <h3 className="font-semibold text-foreground mb-2">How We Protect It</h3>
                   <ul className="text-sm text-muted-foreground space-y-2 list-disc list-inside">
-                    <li>HIPAA-compliant encryption and security measures</li>
-                    <li>Secure data centers with redundant backups</li>
-                    <li>Strict access controls and authentication requirements</li>
-                    <li>Regular security audits and compliance reviews</li>
-                    <li>Employee training on data privacy and security</li>
+                    <li><strong>Encryption:</strong> TLS 1.2+ for data in transit, AES-256 for data at rest</li>
+                    <li><strong>HIPAA Compliance:</strong> Full compliance with healthcare data protection standards</li>
+                    <li><strong>Secure Infrastructure:</strong> Enterprise-grade data centers with redundant backups</li>
+                    <li><strong>Access Controls:</strong> Role-based access, multi-factor authentication</li>
+                    <li><strong>Workflow Security:</strong> Secure n8n automation with encrypted webhook communications</li>
+                    <li><strong>Regular Audits:</strong> Ongoing security assessments and compliance reviews</li>
+                    <li><strong>Staff Training:</strong> Comprehensive employee training on data privacy and security</li>
                   </ul>
                 </div>
 
                 <div className="bg-light-bg p-6 rounded-lg">
-                  <h3 className="font-semibold text-foreground mb-2">Your Control</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Your Control & Rights</h3>
                   <p className="text-sm text-muted-foreground mb-2">
-                    You have the right to:
+                    You have comprehensive rights over your data:
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-2 list-disc list-inside">
-                    <li>Access and review your data</li>
-                    <li>Request corrections to inaccurate information</li>
-                    <li>Request deletion of your data (subject to legal requirements)</li>
-                    <li>Opt out of marketing communications</li>
-                    <li>Restrict certain data processing activities</li>
+                    <li><strong>Access:</strong> View and obtain copies of all data we hold about you</li>
+                    <li><strong>Correction:</strong> Request updates to inaccurate or incomplete information</li>
+                    <li><strong>Deletion:</strong> Request removal of your data (subject to legal retention requirements)</li>
+                    <li><strong>Opt-Out:</strong> Unsubscribe from marketing while maintaining service communications</li>
+                    <li><strong>Portability:</strong> Receive your data in a machine-readable format</li>
+                    <li><strong>Restriction:</strong> Limit certain data processing activities</li>
+                    <li><strong>Objection:</strong> Object to processing based on legitimate interests</li>
                   </ul>
+                  <p className="text-sm text-muted-foreground mt-3">
+                    To exercise any of these rights, contact {CONFIG.EMAILS.SUPPORT}
+                  </p>
                 </div>
               </div>
             </section>
