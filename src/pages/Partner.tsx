@@ -241,7 +241,7 @@ const PartnerPage = () => {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Partner With OneTriage - Healthcare Technology Partnership",
-    "description": "Join OneTriage's partner network. Expand your healthcare services with our HIPAA-compliant referral management platform. White-label options, revenue sharing, and dedicated support available.",
+    "description": "Join OneTriage's partner network. Expand your healthcare services with our HIPAA-compliant care coordination platform. White-label options, revenue sharing, and dedicated support available.",
     "url": "https://www.onetriage.com/partner"
   };
 
@@ -250,7 +250,7 @@ const PartnerPage = () => {
     "@type": "Organization",
     "name": "OneTriage",
     "url": "https://www.onetriage.com",
-    "description": "Healthcare referral management and AI patient triage platform offering B2B partnership opportunities",
+    "description": "Healthcare coordination and AI patient triage platform offering B2B partnership opportunities",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+1-800-916-2459",
@@ -378,7 +378,7 @@ const PartnerPage = () => {
                 </p>
                 
                 <p>
-                  Partners benefit from <strong>white-label solutions</strong> that allow seamless integration of OneTriage's referral management platform into their existing service portfolios. This capability enables technology resellers to offer enterprise-grade healthcare referral automation to their clients while maintaining brand consistency and reducing development overhead. Our white-label platform includes full customization options, allowing partners to tailor the solution to their specific market positioning and client requirements.
+                  Partners benefit from <strong>white-label solutions</strong> that allow seamless integration of OneTriage's care coordination platform into their existing service portfolios. This capability enables technology resellers to offer enterprise-grade healthcare automation to their clients while maintaining brand consistency and reducing development overhead. Our white-label platform includes full customization options, allowing partners to tailor the solution to their specific market positioning and client requirements.
                 </p>
                 
                 <p>
@@ -390,7 +390,7 @@ const PartnerPage = () => {
                     <TrendingUp className="h-8 w-8 text-primary mb-4" />
                     <h3 className="text-xl font-bold text-foreground mb-3">Market Expansion Opportunities</h3>
                     <p className="text-sm text-muted-foreground">
-                      Access to OneTriage's comprehensive referral management platform enables partners to expand into new healthcare verticals including hospital systems, ambulatory care networks, accountable care organizations, and specialty practice groups.
+                      Access to OneTriage's comprehensive care coordination platform enables partners to expand into new healthcare verticals including hospital systems, ambulatory care networks, accountable care organizations, and specialty practice groups.
                     </p>
                   </div>
                   

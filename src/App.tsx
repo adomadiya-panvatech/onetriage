@@ -34,25 +34,25 @@ const App = () => (
                   element={
                     <>
                       <Helmet>
-                        <title>OneTriage - AI Patient Triage & Healthcare Referral Management Platform</title>
+                        <title>OneTriage - AI Patient Triage & Healthcare Coordination Platform</title>
                         <meta
                           name="description"
-                          content="Comprehensive healthcare referral ecosystem combining AI-powered patient triage, automated specialist referral management, provider network coordination, and B2B partner growth. Reduce wait times 60%."
+                          content="Comprehensive healthcare platform combining AI-powered patient triage, automated care coordination, provider network management, and B2B partner growth. Reduce wait times 60%."
                         />
-                        <meta name="keywords" content="healthcare referral management, AI patient triage, specialist referral platform, provider referral network, B2B healthcare reseller, automated referral tracking, referral management software, healthcare referral coordination, patient referral system, specialist network matching, referral-based healthcare, healthcare partner network, AI-driven patient triage, automated healthcare triage, intelligent patient onboarding, telemedicine automation, HIPAA compliant referral management" />
+                        <meta name="keywords" content="healthcare coordination platform, AI patient triage, specialist care coordination, provider network management, B2B healthcare reseller, automated care tracking, healthcare coordination software, patient care management, specialist network matching, healthcare partner network, AI-driven patient triage, automated healthcare triage, intelligent patient onboarding, telemedicine automation, HIPAA compliant healthcare platform" />
                         <link rel="canonical" href="https://www.onetriage.com/" />
                         
                         {/* Open Graph Meta Tags */}
                         <meta property="og:type" content="website" />
-                        <meta property="og:title" content="OneTriage - Healthcare Referral Management & AI Patient Triage" />
-                        <meta property="og:description" content="Comprehensive referral ecosystem: AI patient triage, automated specialist referrals, provider network matching, B2B partner growth. 60% faster, 99.2% accurate." />
+                        <meta property="og:title" content="OneTriage - Healthcare Coordination & AI Patient Triage" />
+                        <meta property="og:description" content="Comprehensive healthcare platform: AI patient triage, automated care coordination, provider network matching, B2B partner growth. 60% faster, 99.2% accurate." />
                         <meta property="og:url" content="https://www.onetriage.com/" />
                         <meta property="og:site_name" content="OneTriage" />
                         
                         {/* Twitter Card Meta Tags */}
                         <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:title" content="OneTriage - Healthcare Referral Management & AI Patient Triage" />
-                        <meta name="twitter:description" content="Complete referral ecosystem: AI triage, specialist referrals, provider networks, B2B growth. HIPAA compliant." />
+                        <meta name="twitter:title" content="OneTriage - Healthcare Coordination & AI Patient Triage" />
+                        <meta name="twitter:description" content="Complete healthcare platform: AI triage, care coordination, provider networks, B2B growth. HIPAA compliant." />
                         
                         {/* Structured Data - Organization */}
                         <script type="application/ld+json">
@@ -62,7 +62,7 @@ const App = () => (
                             "name": "OneTriage",
                             "url": "https://www.onetriage.com",
                             "logo": "https://www.onetriage.com/ic_launcher.png",
-                            "description": "Comprehensive healthcare referral ecosystem combining AI-driven patient triage, automated specialist referral management, provider network coordination, and B2B partner growth. Reduce wait times 60% with intelligent referral tracking.",
+                            "description": "Comprehensive healthcare platform combining AI-driven patient triage, automated care coordination, provider network management, and B2B partner growth. Reduce wait times 60% with intelligent care tracking.",
                             "address": {
                               "@type": "PostalAddress",
                               "streetAddress": "14269 Danielson St, Suite 400",
@@ -102,17 +102,17 @@ const App = () => (
                               "ratingValue": "4.9",
                               "ratingCount": "500"
                             },
-                            "description": "Comprehensive healthcare referral management and AI patient triage platform. Automates specialist referrals, coordinates provider networks, manages referral-based patient flow, and powers B2B partner growth. HIPAA compliant.",
+                            "description": "Comprehensive healthcare coordination and AI patient triage platform. Automates specialist connections, coordinates provider networks, manages patient flow optimization, and powers B2B partner growth. HIPAA compliant.",
                             "featureList": [
                               "AI-driven patient triage and assessment",
-                              "Automated specialist referral management",
+                              "Automated care coordination",
                               "Intelligent provider network matching",
-                              "Referral tracking and coordination",
+                              "Care tracking and coordination",
                               "B2B partner and reseller network",
                               "24/7 automated patient assessment",
                               "EHR integration (Epic, Cerner, Allscripts)",
                               "HIPAA compliant security",
-                              "Real-time referral status tracking",
+                              "Real-time care status tracking",
                               "Provider network analytics"
                             ]
                           })}
@@ -127,22 +127,22 @@ const App = () => (
                   element={
                     <>
                       <Helmet>
-                        <title>Contact OneTriage - Healthcare Referral Management Demo</title>
+                        <title>Contact OneTriage - Healthcare Coordination Platform Demo</title>
                         <meta
                           name="description"
-                          content="Schedule a demo of OneTriage's comprehensive referral ecosystem. AI patient triage, specialist referral management, provider networks, and partner programs. Contact our team today."
+                          content="Schedule a demo of OneTriage's comprehensive healthcare platform. AI patient triage, care coordination, provider networks, and partner programs. Contact our team today."
                         />
-                        <meta name="keywords" content="healthcare referral management demo, AI triage demo, specialist referral platform, provider network consultation, B2B healthcare partnership, referral management contact, healthcare automation demo" />
+                        <meta name="keywords" content="healthcare coordination demo, AI triage demo, specialist care platform, provider network consultation, B2B healthcare partnership, healthcare coordination contact, healthcare automation demo" />
                         <link rel="canonical" href="https://www.onetriage.com/contact" />
                         
                         <meta property="og:type" content="website" />
-                        <meta property="og:title" content="Contact OneTriage - Referral Management Demo" />
-                        <meta property="og:description" content="Schedule a demo of our healthcare referral ecosystem. AI triage, specialist referrals, provider networks." />
+                        <meta property="og:title" content="Contact OneTriage - Healthcare Platform Demo" />
+                        <meta property="og:description" content="Schedule a demo of our healthcare coordination platform. AI triage, care coordination, provider networks." />
                         <meta property="og:url" content="https://www.onetriage.com/contact" />
                         
                         <meta name="twitter:card" content="summary" />
-                        <meta name="twitter:title" content="Contact OneTriage - Referral Management Demo" />
-                        <meta name="twitter:description" content="Get a demo of OneTriage's comprehensive healthcare referral platform." />
+                        <meta name="twitter:title" content="Contact OneTriage - Healthcare Platform Demo" />
+                        <meta name="twitter:description" content="Get a demo of OneTriage's comprehensive healthcare coordination platform." />
                       </Helmet>
                       <ContactPage />
                     </>

@@ -336,7 +336,7 @@ const HomePage = () => {
             <div className="relative">
               <img
                 src={heroImage}
-                alt="AI-powered patient triage and healthcare referral management system streamlining operations"
+                alt="AI-powered patient triage and healthcare coordination system streamlining operations"
                 className="rounded-2xl shadow-2xl w-full"
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg hidden md:block">

@@ -202,7 +202,7 @@ const ContactPage = () => {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact OneTriage",
-    "description": "Schedule a demo of OneTriage's comprehensive healthcare referral ecosystem. AI patient triage, specialist referral management, provider networks, and partner programs.",
+    "description": "Schedule a demo of OneTriage's comprehensive healthcare platform. AI patient triage, care coordination, provider networks, and partner programs.",
     "url": "https://www.onetriage.com/contact",
     "mainEntity": {
       "@type": "Organization",
@@ -264,7 +264,7 @@ const ContactPage = () => {
               Contact Us
             </h1>
             <p className="text-xl text-white/90">
-              We're here to help 24/7. Schedule a personalized demo of our AI-driven patient triage and referral management platform.
+              We're here to help 24/7. Schedule a personalized demo of our AI-driven patient triage and care coordination platform.
             </p>
           </div>
         </div>
@@ -574,7 +574,7 @@ const ContactPage = () => {
             
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p className="text-base">
-                Our personalized demonstration provides healthcare organizations with a comprehensive overview of how <strong className="text-foreground">OneTriage's AI-powered referral management platform</strong> can transform your operations. During your demo, our team will walk you through the complete ecosystem, including <strong className="text-foreground">AI-driven patient triage capabilities</strong>, automated specialist referral workflows, provider network coordination features, and B2B partnership opportunities.
+                Our personalized demonstration provides healthcare organizations with a comprehensive overview of how <strong className="text-foreground">OneTriage's AI-powered healthcare platform</strong> can transform your operations. During your demo, our team will walk you through the complete ecosystem, including <strong className="text-foreground">AI-driven patient triage capabilities</strong>, automated care coordination workflows, provider network management features, and B2B partnership opportunities.
               </p>
               
               <div className="grid md:grid-cols-3 gap-4 md:gap-6 mt-8">
@@ -620,7 +620,7 @@ const ContactPage = () => {
                 <ul className="space-y-3 text-sm md:text-base">
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground"><strong className="text-foreground">Proven Results:</strong> Healthcare providers using OneTriage report 60% reduction in patient wait times and 75% faster referral processing.</span>
+                    <span className="text-muted-foreground"><strong className="text-foreground">Proven Results:</strong> Healthcare providers using OneTriage report 60% reduction in patient wait times and 75% faster care coordination.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
