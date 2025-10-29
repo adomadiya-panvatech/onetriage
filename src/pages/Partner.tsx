@@ -1,4 +1,5 @@
 import { useState, FormEvent } from "react";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Building2, Users, DollarSign, Headphones, Loader2, Hospital, Briefcase, Shield, Heart } from "lucide-react";
+import { Building2, Users, DollarSign, Headphones, Loader2, Hospital, Briefcase, Shield, Heart, CheckCircle2, TrendingUp } from "lucide-react";
 import { formatPhoneNumber, validatePhone, validateEmail } from "@/utils/phoneFormatter";
 import { Lead } from "@/types/lead";
 import { CONFIG } from "@/config/constants";
@@ -229,8 +230,64 @@ const PartnerPage = () => {
     }
   };
 
+  // Structured Data Schemas
+  const partnerPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Partner With OneTriage - Healthcare Technology Partnership",
+    "description": "Join OneTriage's partner network. Expand your healthcare services with our HIPAA-compliant referral management platform. White-label options, revenue sharing, and dedicated support available.",
+    "url": "https://www.onetriage.com/partner"
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "OneTriage",
+    "url": "https://www.onetriage.com",
+    "description": "Healthcare referral management and AI patient triage platform offering B2B partnership opportunities",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-800-916-2459",
+      "contactType": "sales",
+      "email": "sales@onetriage.com",
+      "areaServed": "US",
+      "availableLanguage": "English"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.onetriage.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Partner With Us",
+        "item": "https://www.onetriage.com/partner"
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-light-bg">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(partnerPageSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      </Helmet>
+
       {/* Header */}
       <section className="bg-gradient-hero text-white py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -296,6 +353,51 @@ const PartnerPage = () => {
                 <h3 className="text-sm font-semibold text-foreground">{type.title}</h3>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Content-Rich Section for SEO */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <article className="prose prose-lg max-w-none">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
+                Building Successful Healthcare Technology Partnerships
+              </h2>
+              
+              <div className="space-y-6 text-muted-foreground leading-relaxed">
+                <p>
+                  OneTriage's <strong>B2B partner program</strong> enables healthcare technology resellers, consulting firms, and healthcare systems to expand their service offerings while driving revenue growth. Our comprehensive partnership model provides flexible engagement options designed to meet the diverse needs of healthcare technology companies operating across various market segments.
+                </p>
+                
+                <p>
+                  Partners benefit from <strong>white-label solutions</strong> that allow seamless integration of OneTriage's referral management platform into their existing service portfolios. This capability enables technology resellers to offer enterprise-grade healthcare referral automation to their clients while maintaining brand consistency and reducing development overhead. Our white-label platform includes full customization options, allowing partners to tailor the solution to their specific market positioning and client requirements.
+                </p>
+                
+                <p>
+                  The <strong>revenue sharing model</strong> provides attractive financial incentives for partners who successfully refer healthcare organizations to OneTriage. Partners receive competitive commission structures based on client subscription value, with opportunities for ongoing revenue generation through client renewals and expansion accounts. Additionally, partners who offer white-label implementations benefit from margin opportunities on platform licensing and implementation services.
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-6 mt-8">
+                  <div className="bg-light-bg p-6 rounded-xl border-2 border-border">
+                    <TrendingUp className="h-8 w-8 text-primary mb-4" />
+                    <h3 className="text-xl font-bold text-foreground mb-3">Market Expansion Opportunities</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Access to OneTriage's comprehensive referral management platform enables partners to expand into new healthcare verticals including hospital systems, ambulatory care networks, accountable care organizations, and specialty practice groups.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-light-bg p-6 rounded-xl border-2 border-border">
+                    <Headphones className="h-8 w-8 text-primary mb-4" />
+                    <h3 className="text-xl font-bold text-foreground mb-3">Comprehensive Partner Support</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Dedicated partner success team provides technical support, sales enablement resources, marketing materials, and training programs to ensure successful client implementations and ongoing partner growth.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>

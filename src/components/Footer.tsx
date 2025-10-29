@@ -77,13 +77,14 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" />
                 <div className="space-y-1">
                   <a
-                   
-                    className="text-primary-foreground/80  text-sm block"
+                    href="#"
+                    className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm block"
                   >
-                    {CONFIG.EMAILS.SUPPORT} 
+                    {CONFIG.EMAILS.SUPPORT}
                   </a>
                   <a
-                    className="text-primary-foreground/80  text-sm block"
+                    href="mailto:sales@onetriage.com"
+                    className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm block"
                   >
                     {CONFIG.EMAILS.SALES}
                   </a>

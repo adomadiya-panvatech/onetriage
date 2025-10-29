@@ -1,11 +1,12 @@
 import { useState, FormEvent } from "react";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import { Phone, MapPin, Mail, Clock, Loader2, Send, CheckCircle2, Calendar as CalendarIcon } from "lucide-react";
+import { Phone, MapPin, Mail, Clock, Loader2, Send, CheckCircle2, Calendar as CalendarIcon, MessageSquare, Video, Users } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { formatPhoneNumber, validatePhone, validateEmail } from "@/utils/phoneFormatter";
@@ -207,8 +208,65 @@ const ContactPage = () => {
     }
   };
 
+  // Structured Data Schemas
+  const contactPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact OneTriage",
+    "description": "Schedule a demo of OneTriage's comprehensive healthcare referral ecosystem. AI patient triage, specialist referral management, provider networks, and partner programs.",
+    "url": "https://www.onetriage.com/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "OneTriage",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-800-916-2459",
+        "contactType": "customer service",
+        "email": "support@onetriage.com",
+        "areaServed": "US",
+        "availableLanguage": "English"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "14269 Danielson St, Suite 400",
+        "addressLocality": "Poway",
+        "addressRegion": "CA",
+        "postalCode": "92064",
+        "addressCountry": "US"
+      }
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.onetriage.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://www.onetriage.com/contact"
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-light-bg">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(contactPageSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      </Helmet>
+
       {/* Hero Header */}
       <section className="bg-primary text-white py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -550,6 +608,69 @@ const ContactPage = () => {
             </div>
           </div>
         </div>
+
+        {/* Content-Rich Section for SEO */}
+        <section className="mt-16 max-w-5xl mx-auto">
+          <article className="bg-white rounded-xl shadow-lg p-8 border-2 border-border">
+            <h2 className="text-3xl font-bold text-foreground mb-6">
+              What to Expect from Your OneTriage Demo
+            </h2>
+            
+            <div className="space-y-6 text-muted-foreground leading-relaxed">
+              <p>
+                Our personalized demonstration provides healthcare organizations with a comprehensive overview of how <strong>OneTriage's AI-powered referral management platform</strong> can transform your operations. During your demo, our team will walk you through the complete ecosystem, including <strong>AI-driven patient triage capabilities</strong>, automated specialist referral workflows, provider network coordination features, and B2B partnership opportunities.
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-6 mt-8">
+                <div className="flex items-start gap-3">
+                  <Video className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-2">Live Platform Walkthrough</h3>
+                    <p className="text-sm">See the platform in action with real-world scenarios and use cases tailored to your organization's needs.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <MessageSquare className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-2">Q&A Session</h3>
+                    <p className="text-sm">Get answers to your specific questions about implementation, integration, security, and ROI potential.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <Users className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-2">Custom Solution Design</h3>
+                    <p className="text-sm">Discuss how OneTriage can be configured to meet your unique healthcare workflow requirements.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 p-6 bg-light-bg rounded-lg">
+                <h3 className="text-xl font-bold text-foreground mb-4">Why Healthcare Organizations Choose OneTriage</h3>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span><strong>Proven Results:</strong> Healthcare providers using OneTriage report 60% reduction in patient wait times and 75% faster referral processing.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span><strong>HIPAA Compliant:</strong> Enterprise-grade security with SOC 2 Type II certification and complete regulatory compliance.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span><strong>EHR Integration:</strong> Seamless connectivity with Epic, Cerner, Allscripts, and other major EHR systems.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span><strong>Rapid Implementation:</strong> Typical deployment timeframe of 2-4 weeks with dedicated support throughout.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </section>
 
         {/* Map Section */}
         <div className="mt-16 bg-white rounded-xl shadow-lg p-8 max-w-7xl mx-auto border-2 border-border">

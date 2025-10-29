@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { 
   Clock, Shield, Calendar, Check, Phone, Video, Users2, CheckCircle2,
   Zap, FileText, Workflow, MessageSquare, ClipboardCheck, TrendingUp,
-  Award, Lock, HeartPulse, Sparkles
+  Award, Lock, HeartPulse, Sparkles, HelpCircle, Network, Handshake,
+  Database
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import heroImage from "@/assets/hero-telemedicine.jpg";
@@ -89,32 +96,38 @@ const HomePage = () => {
 
   const faqs = [
     {
+      icon: HelpCircle,
       question: "What makes OneTriage a comprehensive referral ecosystem?",
       answer: "OneTriage uniquely combines four critical healthcare functions: (1) AI-driven patient triage for symptom assessment, (2) Automated referral management for specialist coordination, (3) Provider network matching to connect patients with trusted specialists, and (4) B2B partner/reseller network for scalable growth. This comprehensive approach reduces wait times by 60% while streamlining the entire referral lifecycle."
     },
     {
+      icon: Workflow,
       question: "How does OneTriage handle specialist referrals?",
       answer: "OneTriage's intelligent referral management system automates the entire specialist referral process—from initial referral creation, to specialist matching based on expertise and availability, to appointment coordination and follow-up tracking. The platform maintains complete visibility throughout the referral journey, reducing referral processing time by 75% and preventing patients from falling through the cracks."
     },
     {
+      icon: Network,
       question: "What is the OneTriage provider network?",
       answer: "The OneTriage provider network is a vetted ecosystem of healthcare specialists and providers. When a patient needs specialty care, our intelligent matching algorithm connects them with the most appropriate specialist based on clinical needs, geographic location, insurance acceptance, and availability. Providers benefit from qualified referrals while patients receive faster access to appropriate care."
     },
     {
+      icon: Handshake,
       question: "How does the B2B partner/reseller model work?",
       answer: "OneTriage partners with healthcare technology resellers, consulting firms, and healthcare systems to expand market reach. Partners refer healthcare organizations to OneTriage and can offer white-label solutions to their clients. Our partner program includes revenue sharing, co-marketing support, and dedicated technical assistance to ensure successful client implementations."
     },
     {
+      icon: Shield,
       question: "Is OneTriage HIPAA compliant?",
       answer: "Yes, OneTriage is fully HIPAA compliant with enterprise-grade encryption, secure data transmission, and comprehensive audit trails. All patient data and referral information is protected according to federal healthcare regulations with TLS 1.2+ encryption in transit and AES-256 encryption at rest."
     },
     {
+      icon: Database,
       question: "Can OneTriage integrate with our existing EHR system?",
       answer: "Yes, OneTriage offers seamless integration with major EHR systems including Epic, Cerner, Allscripts, and more. Our API-first architecture ensures smooth bidirectional data flow for patient demographics, referral orders, and clinical documentation without disrupting your existing workflows."
     },
   ];
 
-  // Structured data for FAQs
+  // Comprehensive Structured Data Schemas
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -128,9 +141,140 @@ const HomePage = () => {
     }))
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "OneTriage",
+    "url": "https://www.onetriage.com",
+    "description": "Comprehensive healthcare referral ecosystem combining AI-powered patient triage, automated specialist referral management, provider network coordination, and B2B partner growth.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "OneTriage",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.onetriage.com/ic_launcher.png"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.onetriage.com/?s={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.onetriage.com/"
+      }
+    ]
+  };
+
+  const medicalBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "OneTriage",
+    "url": "https://www.onetriage.com",
+    "logo": "https://www.onetriage.com/ic_launcher.png",
+    "description": "HIPAA-compliant healthcare referral management and AI patient triage platform. Comprehensive ecosystem for automated specialist referrals, provider network coordination, and referral-based patient flow management.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "14269 Danielson St, Suite 400",
+      "addressLocality": "Poway",
+      "addressRegion": "CA",
+      "postalCode": "92064",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-800-916-2459",
+    "priceRange": "Contact for pricing",
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "medicalSpecialty": [
+      "Healthcare Technology",
+      "Patient Referral Management",
+      "AI-Powered Triage",
+      "Healthcare Coordination"
+    ]
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Healthcare Referral Management Platform",
+    "provider": {
+      "@type": "Organization",
+      "name": "OneTriage"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "OneTriage Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI-Driven Patient Triage",
+            "description": "Intelligent symptom assessment and priority classification using machine learning algorithms. 60% reduction in wait times, 99.2% accuracy."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Automated Specialist Referral Management",
+            "description": "End-to-end referral workflow automation from creation to follow-up tracking. 75% faster referral processing."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Provider Network Coordination",
+            "description": "Intelligent matching algorithm connecting patients with appropriate specialists based on clinical needs, location, and availability."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "B2B Partner & Reseller Network",
+            "description": "White-label solutions and revenue sharing opportunities for healthcare technology partners."
+          }
+        }
+      ]
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Helmet>
+        {/* Structured Data Schemas */}
+        <script type="application/ld+json">
+          {JSON.stringify(websiteSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(medicalBusinessSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
         </script>
@@ -232,6 +376,45 @@ const HomePage = () => {
             <p className="text-lg text-foreground leading-relaxed">
               OneTriage is a <strong>comprehensive healthcare referral ecosystem</strong> that combines <strong>intelligent, AI-powered patient triage</strong> with <strong>automated referral management</strong> and <strong>provider network coordination</strong>. Our <strong>HIPAA-compliant platform</strong> streamlines specialist referrals, manages referral-based patient flow, connects patients to trusted provider networks, and powers partner-driven growth—all while providing <strong>24/7 automated patient assessment</strong> and reducing administrative burden by up to 50%.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Comprehensive Platform Overview - Content-Rich Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <article className="prose prose-lg max-w-none">
+              <h2 className="text-3xl font-bold text-foreground mb-6 text-center">
+                Transforming Healthcare Referral Management Through AI and Automation
+              </h2>
+              
+              <div className="space-y-6 text-muted-foreground leading-relaxed">
+                <p>
+                  OneTriage represents the next generation of <strong>healthcare referral management technology</strong>, designed to address the critical pain points facing healthcare organizations today. Traditional referral processes are plagued by manual workflows, communication gaps, lost referrals, and extended wait times that negatively impact both patient care and provider efficiency.
+                </p>
+                
+                <p>
+                  Our <strong>AI-driven patient triage system</strong> revolutionizes how healthcare organizations assess and prioritize patient needs. Using advanced machine learning algorithms trained on millions of clinical data points, OneTriage automatically evaluates patient symptoms, medical history, and urgency indicators to provide accurate triage classifications in seconds rather than hours. This <strong>intelligent patient assessment</strong> process achieves 99.2% accuracy in urgency classification, enabling healthcare providers to allocate resources more effectively and reduce patient wait times by an average of 60%.
+                </p>
+                
+                <p>
+                  The <strong>automated specialist referral management</strong> component eliminates the friction and inefficiencies inherent in manual referral workflows. From the moment a referral is initiated, OneTriage's intelligent system automatically matches patients with appropriate specialists based on clinical expertise, geographic proximity, insurance network compatibility, and real-time availability. The platform maintains complete visibility throughout the entire referral journey, sending automated reminders, tracking referral status updates, and ensuring no patient falls through the cracks. Healthcare organizations using OneTriage report a 75% reduction in referral processing time and significantly improved referral completion rates.
+                </p>
+                
+                <p>
+                  <strong>Provider network coordination</strong> is central to OneTriage's comprehensive approach. Our platform connects healthcare organizations to a vetted ecosystem of specialists and providers, facilitating seamless communication and care coordination. The intelligent matching algorithm considers multiple factors including specialty requirements, clinical appropriateness, patient preferences, geographic accessibility, and insurance network alignment to ensure optimal provider-patient matches. This network-based approach benefits all stakeholders: patients receive faster access to appropriate care, specialists receive qualified referrals, and referring providers maintain visibility into patient care continuity.
+                </p>
+                
+                <p>
+                  For <strong>B2B healthcare technology partners and resellers</strong>, OneTriage offers scalable growth opportunities through our partner program. Partners can offer white-label solutions to their healthcare organization clients, participate in revenue sharing arrangements, and leverage comprehensive co-marketing and technical support resources. This partner-driven model enables rapid market expansion while ensuring high-quality implementation and ongoing success for partner clients across various healthcare verticals including hospital systems, ambulatory care networks, accountable care organizations (ACOs), and independent practice associations (IPAs).
+                </p>
+                
+                <p>
+                  <strong>HIPAA compliance and enterprise-grade security</strong> are foundational to the OneTriage platform. All patient data and referral information is protected with TLS 1.2+ encryption in transit and AES-256 encryption at rest, comprehensive audit trails, role-based access controls, and complete adherence to federal healthcare regulations. Our platform holds SOC 2 Type II certification and is designed to integrate seamlessly with major EHR systems including Epic, Cerner, Allscripts, and others through our API-first architecture.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -412,6 +595,103 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Use Cases & Industry Applications - Content-Rich Section */}
+      <section className="py-16 bg-light-bg">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
+              Healthcare Referral Management Solutions for Every Organization Type
+            </h2>
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <article className="bg-white p-6 rounded-xl border-2 border-border">
+                <h3 className="text-xl font-bold text-foreground mb-4">Hospital Systems & Health Networks</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Large hospital systems and integrated health networks utilize OneTriage to streamline referrals between primary care providers, specialists, and ancillary services. The platform's intelligent routing capabilities ensure patients are directed to the most appropriate care setting, whether that's a same-day appointment with a specialist within the network or urgent care placement. Hospital administrators benefit from comprehensive referral analytics that identify bottlenecks, track referral patterns, and optimize resource allocation across the entire care continuum.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Centralized referral coordination across multiple facilities</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Real-time visibility into referral status and care transitions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Integration with Epic, Cerner, and other enterprise EHR systems</span>
+                  </li>
+                </ul>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border-2 border-border">
+                <h3 className="text-xl font-bold text-foreground mb-4">Primary Care Practices & Clinics</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Primary care physicians and clinic administrators leverage OneTriage to manage high volumes of specialist referrals efficiently while maintaining continuity of care. The platform's automated workflow eliminates time-consuming phone calls and fax transmissions, replacing manual processes with intelligent digital referral management. Clinics report significant reductions in administrative overhead, improved referral completion rates, and enhanced patient satisfaction through faster access to specialty care.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Automated referral creation and tracking</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Intelligent specialist matching based on patient needs</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Seamless communication with referral specialists</span>
+                  </li>
+                </ul>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border-2 border-border">
+                <h3 className="text-xl font-bold text-foreground mb-4">Accountable Care Organizations (ACOs)</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  ACOs and value-based care organizations utilize OneTriage to maintain care coordination while managing costs and quality metrics. The platform's referral analytics help ACO administrators identify high-value referral partners, track care quality outcomes, and ensure patients receive appropriate care within preferred networks. This capability is critical for organizations participating in Medicare Shared Savings Programs and other value-based reimbursement models.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Value-based care coordination and quality tracking</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Network management and preferred provider selection</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Comprehensive referral analytics and reporting</span>
+                  </li>
+                </ul>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border-2 border-border">
+                <h3 className="text-xl font-bold text-foreground mb-4">Specialty Care Networks</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Specialty care networks and independent practice associations benefit from OneTriage's provider network coordination capabilities. Specialist practices can manage incoming referrals from multiple referring providers, optimize scheduling based on urgency and complexity, and maintain comprehensive visibility into patient care journeys. The platform's intelligent matching ensures specialists receive appropriate referrals aligned with their clinical expertise and availability.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Centralized referral intake and management</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Automated appointment scheduling and reminders</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Communication portal for referring providers</span>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="py-20 md:py-28 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -494,17 +774,34 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl border-2 border-border">
-                <h3 className="text-xl font-bold text-foreground mb-4">
-                  {faq.question}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="bg-white rounded-xl border-2 border-border px-6 shadow-sm hover:shadow-md transition-shadow duration-200"
+                >
+                  <AccordionTrigger className="hover:no-underline py-6">
+                    <div className="flex items-start gap-4 text-left">
+                      <div className="mt-1 p-2 rounded-lg bg-primary/10 flex-shrink-0">
+                        <faq.icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <span className="text-lg font-semibold text-foreground pr-4">
+                        {faq.question}
+                      </span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-6 pt-2">
+                    <div className="pl-14 pr-8">
+                      <p className="text-muted-foreground leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
 
           <div className="text-center mt-12">
