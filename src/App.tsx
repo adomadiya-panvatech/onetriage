@@ -27,40 +27,40 @@ const App = () => (
             <Header />
             <main className="flex-grow">
               <Routes>
-                <Route
+                  <Route
                   path="/"
                   element={
                     <>
                       <Helmet>
-                        <title>OneTriage - 24/7 Telemedicine & Video Doctor Consultations</title>
+                        <title>OneTriage - AI-Driven Patient Triage & Healthcare Automation Platform</title>
                         <meta
                           name="description"
-                          content="Connect with board-certified healthcare providers instantly through OneTriage's secure HIPAA-compliant telemedicine platform. Schedule video consultations 24/7 and get quality healthcare from home or work."
+                          content="Transform healthcare delivery with OneTriage's AI-powered patient triage, automated document collection, intelligent workflow automation, and seamless patient onboarding. Reduce wait times by 60%."
                         />
-                        <meta name="keywords" content="telemedicine, online doctor consultation, video doctor visits, virtual healthcare, telehealth services, remote medical consultation, 24/7 healthcare, HIPAA compliant telemedicine, virtual doctor appointment, online medical care" />
+                        <meta name="keywords" content="AI-driven patient triage, automated healthcare triage, intelligent patient onboarding, telemedicine automation, patient communication automation, healthcare workflow automation, consent management healthcare, AI patient triage software, automated patient assessment, healthcare automation platform, HIPAA compliant triage, clinical workflow optimization, automated health screening, patient engagement software, healthcare AI solutions" />
                         <link rel="canonical" href="https://www.onetriage.com/" />
                         
                         {/* Open Graph Meta Tags */}
                         <meta property="og:type" content="website" />
-                        <meta property="og:title" content="OneTriage - 24/7 Telemedicine & Video Doctor Consultations" />
-                        <meta property="og:description" content="Connect with board-certified healthcare providers instantly through secure video consultations. Available 24/7 for quality care from anywhere." />
+                        <meta property="og:title" content="OneTriage - AI-Driven Patient Triage & Healthcare Automation" />
+                        <meta property="og:description" content="AI-powered patient triage platform that reduces wait times by 60%. Automated healthcare workflows, intelligent document collection, and seamless EHR integration." />
                         <meta property="og:url" content="https://www.onetriage.com/" />
                         <meta property="og:site_name" content="OneTriage" />
                         
                         {/* Twitter Card Meta Tags */}
                         <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:title" content="OneTriage - 24/7 Telemedicine & Video Doctor Consultations" />
-                        <meta name="twitter:description" content="Connect with healthcare providers instantly through secure video consultations available 24/7." />
+                        <meta name="twitter:title" content="OneTriage - AI-Driven Patient Triage & Healthcare Automation" />
+                        <meta name="twitter:description" content="Transform healthcare with AI-powered patient triage. 60% faster wait times, 99.2% accuracy, seamless EHR integration." />
                         
                         {/* Structured Data - Organization */}
                         <script type="application/ld+json">
                           {JSON.stringify({
                             "@context": "https://schema.org",
-                            "@type": "MedicalOrganization",
+                            "@type": "Organization",
                             "name": "OneTriage",
                             "url": "https://www.onetriage.com",
                             "logo": "https://www.onetriage.com/ic_launcher.png",
-                            "description": "24/7 telemedicine platform connecting patients with board-certified healthcare providers through secure video consultations",
+                            "description": "AI-driven patient triage and healthcare automation platform. Reduce wait times by 60% with intelligent symptom assessment, automated document collection, and workflow automation.",
                             "address": {
                               "@type": "PostalAddress",
                               "streetAddress": "14269 Danielson St, Suite 400",
@@ -72,7 +72,7 @@ const App = () => (
                             "contactPoint": {
                               "@type": "ContactPoint",
                               "telephone": "+1-800-916-2459",
-                              "contactType": "customer service",
+                              "contactType": "sales",
                               "availableLanguage": "English",
                               "areaServed": "US"
                             },
@@ -82,37 +82,34 @@ const App = () => (
                           })}
                         </script>
                         
-                        {/* Structured Data - Service */}
+                        {/* Structured Data - SoftwareApplication */}
                         <script type="application/ld+json">
                           {JSON.stringify({
                             "@context": "https://schema.org",
-                            "@type": "Service",
-                            "serviceType": "Telemedicine",
-                            "provider": {
-                              "@type": "MedicalOrganization",
-                              "name": "OneTriage"
+                            "@type": "SoftwareApplication",
+                            "name": "OneTriage",
+                            "applicationCategory": "HealthApplication",
+                            "operatingSystem": "Web-based",
+                            "offers": {
+                              "@type": "Offer",
+                              "price": "0",
+                              "priceCurrency": "USD"
                             },
-                            "areaServed": "US",
-                            "hasOfferCatalog": {
-                              "@type": "OfferCatalog",
-                              "name": "Telemedicine Services",
-                              "itemListElement": [
-                                {
-                                  "@type": "Offer",
-                                  "itemOffered": {
-                                    "@type": "Service",
-                                    "name": "Video Consultation with Healthcare Provider"
-                                  }
-                                },
-                                {
-                                  "@type": "Offer",
-                                  "itemOffered": {
-                                    "@type": "Service",
-                                    "name": "24/7 Medical Support"
-                                  }
-                                }
-                              ]
-                            }
+                            "aggregateRating": {
+                              "@type": "AggregateRating",
+                              "ratingValue": "4.9",
+                              "ratingCount": "500"
+                            },
+                            "description": "AI-powered patient triage system with automated document collection, intelligent workflow automation, and seamless EHR integration. HIPAA compliant healthcare automation platform.",
+                            "featureList": [
+                              "AI-driven patient triage",
+                              "Automated document collection",
+                              "Intelligent workflow automation",
+                              "24/7 patient assessment",
+                              "EHR integration (Epic, Cerner, Allscripts)",
+                              "HIPAA compliant",
+                              "Real-time priority routing"
+                            ]
                           })}
                         </script>
                       </Helmet>
