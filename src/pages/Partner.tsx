@@ -26,6 +26,8 @@ const PartnerPage = () => {
     region: "",
     orgType: "",
     potentialUsers: "",
+    preferredContactMethod: "",
+    bestTimeToContact: "",
     message: "",
   });
 
@@ -119,8 +121,8 @@ const PartnerPage = () => {
       newErrors.orgType = "Partnership type is required";
     }
 
-    if (!formData.region) {
-      newErrors.region = "Geographic region is required";
+    if (!formData.potentialUsers) {
+      newErrors.potentialUsers = "Potential users is required";
     }
 
     if (!formData.message.trim()) {
@@ -180,6 +182,8 @@ const PartnerPage = () => {
             region: formData.region,
             partnershipType: formData.orgType,
             potentialUsers: formData.potentialUsers,
+            preferredContactMethod: formData.preferredContactMethod || null,
+            bestTimeToContact: formData.bestTimeToContact || null,
             message: formData.message,
             source: "OneTriage Marketing Website",
           }
@@ -215,6 +219,8 @@ const PartnerPage = () => {
           region: "",
           orgType: "",
           potentialUsers: "",
+          preferredContactMethod: "",
+          bestTimeToContact: "",
           message: "",
         });
         setShowSuccess(false);
@@ -543,215 +549,240 @@ const PartnerPage = () => {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Organization Name <span className="text-destructive">*</span>
-                  </label>
-                  <Input
-                    type="text"
-                    placeholder="Your Organization"
-                    value={formData.organization}
-                    onChange={(e) =>
-                      setFormData({ ...formData, organization: e.target.value })
-                    }
-                    className={errors.organization ? "border-destructive" : ""}
-                  />
-                  {errors.organization && (
-                    <p className="mt-1 text-sm text-destructive">
-                      {errors.organization}
-                    </p>
-                  )}
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {/* Section 1: Organization Information */}
+                <div className="space-y-6">
+                  <h3 className="text-xl font-bold text-foreground border-b-2 border-primary pb-2">
+                    1 Organization Information
+                  </h3>
+                  
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Your Name <span className="text-destructive">*</span>
+                      Organization Name <span className="text-destructive">*</span>
                     </label>
                     <Input
                       type="text"
-                      placeholder="John Doe"
-                      value={formData.name}
+                      placeholder="Your Organization"
+                      value={formData.organization}
                       onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
+                        setFormData({ ...formData, organization: e.target.value })
                       }
-                      className={errors.name ? "border-destructive" : ""}
+                      className={errors.organization ? "border-destructive" : ""}
                     />
-                    {errors.name && (
-                      <p className="mt-1 text-sm text-destructive">{errors.name}</p>
+                    {errors.organization && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.organization}
+                      </p>
                     )}
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Title/Role <span className="text-destructive">*</span>
-                    </label>
-                    <Input
-                      type="text"
-                      placeholder="Chief Medical Officer"
-                      value={formData.title}
-                      onChange={(e) =>
-                        setFormData({ ...formData, title: e.target.value })
-                      }
-                      className={errors.title ? "border-destructive" : ""}
-                    />
-                    {errors.title && (
-                      <p className="mt-1 text-sm text-destructive">{errors.title}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Email Address <span className="text-destructive">*</span>
-                    </label>
-                    <Input
-                      type="email"
-                      placeholder="john@example.com"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      className={errors.email ? "border-destructive" : ""}
-                    />
-                    {errors.email && (
-                      <p className="mt-1 text-sm text-destructive">{errors.email}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Phone Number <span className="text-destructive">*</span>
-                    </label>
-                    <Input
-                      type="tel"
-                      placeholder="(555) 123-4567"
-                      value={formData.phone}
-                      onChange={(e) => handlePhoneChange(e.target.value)}
-                      className={errors.phone ? "border-destructive" : ""}
-                    />
-                    {errors.phone && (
-                      <p className="mt-1 text-sm text-destructive">{errors.phone}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Company Website
-                  </label>
-                  <Input
-                    type="url"
-                    placeholder="https://www.yourcompany.com"
-                    value={formData.website}
-                    onChange={(e) =>
-                      setFormData({ ...formData, website: e.target.value })
-                    }
-                  />
-                  <p className="mt-1 text-xs text-muted-foreground">Optional</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Geographic Region <span className="text-destructive">*</span>
-                    </label>
-                    <Select
-                      value={formData.region}
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, region: value })
-                      }
-                    >
-                      <SelectTrigger
-                        className={errors.region ? "border-destructive" : ""}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Organization Type <span className="text-destructive">*</span>
+                      </label>
+                      <Select
+                        value={formData.orgType}
+                        onValueChange={(value) =>
+                          setFormData({ ...formData, orgType: value })
+                        }
                       >
-                        <SelectValue placeholder="Select region" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white z-50">
-                        <SelectItem value="Northeast US">Northeast US</SelectItem>
-                        <SelectItem value="Southeast US">Southeast US</SelectItem>
-                        <SelectItem value="Midwest US">Midwest US</SelectItem>
-                        <SelectItem value="Southwest US">Southwest US</SelectItem>
-                        <SelectItem value="West US">West US</SelectItem>
-                        <SelectItem value="Canada">Canada</SelectItem>
-                        <SelectItem value="International">International</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    {errors.region && (
-                      <p className="mt-1 text-sm text-destructive">{errors.region}</p>
-                    )}
+                        <SelectTrigger
+                          className={errors.orgType ? "border-destructive" : ""}
+                        >
+                          <SelectValue placeholder="Select type" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white z-50">
+                          <SelectItem value="Reseller">Reseller</SelectItem>
+                          <SelectItem value="Technology Partner">Technology Partner</SelectItem>
+                          <SelectItem value="Healthcare Provider">Healthcare Provider</SelectItem>
+                          <SelectItem value="Other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      {errors.orgType && (
+                        <p className="mt-1 text-sm text-destructive">{errors.orgType}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Potential Users <span className="text-destructive">*</span>
+                      </label>
+                      <Select
+                        value={formData.potentialUsers}
+                        onValueChange={(value) =>
+                          setFormData({ ...formData, potentialUsers: value })
+                        }
+                      >
+                        <SelectTrigger
+                          className={errors.potentialUsers ? "border-destructive" : ""}
+                        >
+                          <SelectValue placeholder="Select range" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white z-50">
+                          <SelectItem value="1-50">1-50</SelectItem>
+                          <SelectItem value="51-200">51-200</SelectItem>
+                          <SelectItem value="201-500">201-500</SelectItem>
+                          <SelectItem value="501-1000">501-1000</SelectItem>
+                          <SelectItem value="1000+">1000+</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      {errors.potentialUsers && (
+                        <p className="mt-1 text-sm text-destructive">{errors.potentialUsers}</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 2: Contact Information */}
+                <div className="space-y-6">
+                  <h3 className="text-xl font-bold text-foreground border-b-2 border-primary pb-2">
+                    2 Contact Information
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Your Name <span className="text-destructive">*</span>
+                      </label>
+                      <Input
+                        type="text"
+                        placeholder="Your Full Name"
+                        value={formData.name}
+                        onChange={(e) =>
+                          setFormData({ ...formData, name: e.target.value })
+                        }
+                        className={errors.name ? "border-destructive" : ""}
+                      />
+                      {errors.name && (
+                        <p className="mt-1 text-sm text-destructive">{errors.name}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Title/Role <span className="text-destructive">*</span>
+                      </label>
+                      <Input
+                        type="text"
+                        placeholder="Chief Medical Officer"
+                        value={formData.title}
+                        onChange={(e) =>
+                          setFormData({ ...formData, title: e.target.value })
+                        }
+                        className={errors.title ? "border-destructive" : ""}
+                      />
+                      {errors.title && (
+                        <p className="mt-1 text-sm text-destructive">{errors.title}</p>
+                      )}
+                    </div>
                   </div>
 
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Email Address <span className="text-destructive">*</span>
+                      </label>
+                      <Input
+                        type="email"
+                        placeholder="you@company.com"
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
+                        className={errors.email ? "border-destructive" : ""}
+                      />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-destructive">{errors.email}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Phone Number <span className="text-destructive">*</span>
+                      </label>
+                      <Input
+                        type="tel"
+                        placeholder="(555) 123-4567"
+                        value={formData.phone}
+                        onChange={(e) => handlePhoneChange(e.target.value)}
+                        className={errors.phone ? "border-destructive" : ""}
+                      />
+                      {errors.phone && (
+                        <p className="mt-1 text-sm text-destructive">{errors.phone}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Preferred Contact Method
+                      </label>
+                      <Select
+                        value={formData.preferredContactMethod}
+                        onValueChange={(value) =>
+                          setFormData({ ...formData, preferredContactMethod: value })
+                        }
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select preferred method" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="email">Email</SelectItem>
+                          <SelectItem value="phone">Phone</SelectItem>
+                          <SelectItem value="microsoft-team">Microsoft Team</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Best Time to Contact
+                      </label>
+                      <Select
+                        value={formData.bestTimeToContact}
+                        onValueChange={(value) =>
+                          setFormData({ ...formData, bestTimeToContact: value })
+                        }
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select best time" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="morning">Morning (9:00 AM - 12:00 PM)</SelectItem>
+                          <SelectItem value="afternoon">Afternoon (12:00 PM - 5:00 PM)</SelectItem>
+                          <SelectItem value="evening">Evening (5:00 PM - 8:00 PM)</SelectItem>
+                          <SelectItem value="flexible">Flexible / Any Time</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 3: Partnership Details */}
+                <div className="space-y-6">
+                  <h3 className="text-xl font-bold text-foreground border-b-2 border-primary pb-2">
+                    3 Partnership Details
+                  </h3>
+                  
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Type of Partnership Interest <span className="text-destructive">*</span>
+                      Partnership Interest <span className="text-destructive">*</span>
                     </label>
-                    <Select
-                      value={formData.orgType}
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, orgType: value })
+                    <Textarea
+                      placeholder="Tell us about your partnership interests..."
+                      rows={5}
+                      value={formData.message}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
                       }
-                    >
-                      <SelectTrigger
-                        className={errors.orgType ? "border-destructive" : ""}
-                      >
-                        <SelectValue placeholder="Select type" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white z-50">
-                        <SelectItem value="Reseller">Reseller</SelectItem>
-                        <SelectItem value="Technology Partner">Technology Partner</SelectItem>
-                        <SelectItem value="Healthcare Provider">Healthcare Provider</SelectItem>
-                        <SelectItem value="Other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    {errors.orgType && (
-                      <p className="mt-1 text-sm text-destructive">{errors.orgType}</p>
+                      className={errors.message ? "border-destructive" : ""}
+                    />
+                    {errors.message && (
+                      <p className="mt-1 text-sm text-destructive">{errors.message}</p>
                     )}
                   </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Current Patient Volume
-                  </label>
-                  <Select
-                    value={formData.potentialUsers}
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, potentialUsers: value })
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select range (optional)" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white z-50">
-                      <SelectItem value="1-50">1-50</SelectItem>
-                      <SelectItem value="51-200">51-200</SelectItem>
-                      <SelectItem value="201-500">201-500</SelectItem>
-                      <SelectItem value="501-1000">501-1000</SelectItem>
-                      <SelectItem value="1000+">1000+</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <p className="mt-1 text-xs text-muted-foreground">Optional</p>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Partnership Interest <span className="text-destructive">*</span>
-                  </label>
-                  <Textarea
-                    placeholder="Tell us about your partnership interests..."
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
-                    className={errors.message ? "border-destructive" : ""}
-                  />
-                  {errors.message && (
-                    <p className="mt-1 text-sm text-destructive">{errors.message}</p>
-                  )}
                 </div>
 
                 <Button
