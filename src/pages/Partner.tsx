@@ -21,6 +21,8 @@ const PartnerPage = () => {
     title: "",
     email: "",
     phone: "",
+    website: "",
+    region: "",
     orgType: "",
     potentialUsers: "",
     message: "",
@@ -113,11 +115,11 @@ const PartnerPage = () => {
     }
 
     if (!formData.orgType) {
-      newErrors.orgType = "Organization type is required";
+      newErrors.orgType = "Partnership type is required";
     }
 
-    if (!formData.potentialUsers) {
-      newErrors.potentialUsers = "Please select potential users";
+    if (!formData.region) {
+      newErrors.region = "Geographic region is required";
     }
 
     if (!formData.message.trim()) {
@@ -173,7 +175,9 @@ const PartnerPage = () => {
             title: formData.title,
             email: formData.email,
             phone: formData.phone,
-            organizationType: formData.orgType,
+            website: formData.website,
+            region: formData.region,
+            partnershipType: formData.orgType,
             potentialUsers: formData.potentialUsers,
             message: formData.message,
             source: "OneTriage Marketing Website",
@@ -206,6 +210,8 @@ const PartnerPage = () => {
           title: "",
           email: "",
           phone: "",
+          website: "",
+          region: "",
           orgType: "",
           potentialUsers: "",
           message: "",
@@ -290,6 +296,121 @@ const PartnerPage = () => {
                 <h3 className="text-sm font-semibold text-foreground">{type.title}</h3>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partnership Process */}
+      <section className="py-16 bg-light-bg">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Partnership Process
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              From inquiry to launch in 4 simple steps
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  1
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">Submit Inquiry</h3>
+                <p className="text-sm text-muted-foreground">
+                  Complete the partnership form below
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  2
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">Discovery Call</h3>
+                <p className="text-sm text-muted-foreground">
+                  Meet with our partnerships team within 24-48 hours
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  3
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">Agreement & Setup</h3>
+                <p className="text-sm text-muted-foreground">
+                  Finalize terms and begin technical integration
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  4
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">Go Live</h3>
+                <p className="text-sm text-muted-foreground">
+                  Launch and start serving your users (2-4 weeks)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Success Stories */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Partner Success Stories
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              See how our partners are transforming healthcare delivery
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="bg-light-bg p-8 rounded-xl">
+              <div className="text-primary text-5xl font-serif mb-4">"</div>
+              <p className="text-muted-foreground mb-6">
+                "OneTriage helped us reduce ER wait times by 58% and improved patient satisfaction scores significantly. The integration was seamless."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Hospital className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Regional Health System</p>
+                  <p className="text-sm text-muted-foreground">500+ bed hospital network</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-light-bg p-8 rounded-xl">
+              <div className="text-secondary text-5xl font-serif mb-4">"</div>
+              <p className="text-muted-foreground mb-6">
+                "As a technology reseller, OneTriage's white-label solution allowed us to expand our healthcare offerings quickly with full support."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                  <Briefcase className="h-6 w-6 text-secondary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Healthcare IT Partner</p>
+                  <p className="text-sm text-muted-foreground">Multi-state reseller</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-light-bg p-8 rounded-xl">
+              <div className="text-accent text-5xl font-serif mb-4">"</div>
+              <p className="text-muted-foreground mb-6">
+                "The revenue sharing model exceeded our expectations. We're now able to offer 24/7 care to our members cost-effectively."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-accent" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Insurance Provider</p>
+                  <p className="text-sm text-muted-foreground">50,000+ covered lives</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -415,10 +536,55 @@ const PartnerPage = () => {
                   </div>
                 </div>
 
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Company Website
+                  </label>
+                  <Input
+                    type="url"
+                    placeholder="https://www.yourcompany.com"
+                    value={formData.website}
+                    onChange={(e) =>
+                      setFormData({ ...formData, website: e.target.value })
+                    }
+                  />
+                  <p className="mt-1 text-xs text-muted-foreground">Optional</p>
+                </div>
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Organization Type <span className="text-destructive">*</span>
+                      Geographic Region <span className="text-destructive">*</span>
+                    </label>
+                    <Select
+                      value={formData.region}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, region: value })
+                      }
+                    >
+                      <SelectTrigger
+                        className={errors.region ? "border-destructive" : ""}
+                      >
+                        <SelectValue placeholder="Select region" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white z-50">
+                        <SelectItem value="Northeast US">Northeast US</SelectItem>
+                        <SelectItem value="Southeast US">Southeast US</SelectItem>
+                        <SelectItem value="Midwest US">Midwest US</SelectItem>
+                        <SelectItem value="Southwest US">Southwest US</SelectItem>
+                        <SelectItem value="West US">West US</SelectItem>
+                        <SelectItem value="Canada">Canada</SelectItem>
+                        <SelectItem value="International">International</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    {errors.region && (
+                      <p className="mt-1 text-sm text-destructive">{errors.region}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Type of Partnership Interest <span className="text-destructive">*</span>
                     </label>
                     <Select
                       value={formData.orgType}
@@ -431,15 +597,10 @@ const PartnerPage = () => {
                       >
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Healthcare Provider">
-                          Healthcare Provider
-                        </SelectItem>
-                        <SelectItem value="Insurance">Insurance</SelectItem>
-                        <SelectItem value="Corporate">Corporate</SelectItem>
-                        <SelectItem value="Technology Partner">
-                          Technology Partner
-                        </SelectItem>
+                      <SelectContent className="bg-white z-50">
+                        <SelectItem value="Reseller">Reseller</SelectItem>
+                        <SelectItem value="Technology Partner">Technology Partner</SelectItem>
+                        <SelectItem value="Healthcare Provider">Healthcare Provider</SelectItem>
                         <SelectItem value="Other">Other</SelectItem>
                       </SelectContent>
                     </Select>
@@ -447,36 +608,30 @@ const PartnerPage = () => {
                       <p className="mt-1 text-sm text-destructive">{errors.orgType}</p>
                     )}
                   </div>
+                </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Potential Users <span className="text-destructive">*</span>
-                    </label>
-                    <Select
-                      value={formData.potentialUsers}
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, potentialUsers: value })
-                      }
-                    >
-                      <SelectTrigger
-                        className={errors.potentialUsers ? "border-destructive" : ""}
-                      >
-                        <SelectValue placeholder="Select range" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="1-50">1-50</SelectItem>
-                        <SelectItem value="51-200">51-200</SelectItem>
-                        <SelectItem value="201-500">201-500</SelectItem>
-                        <SelectItem value="501-1000">501-1000</SelectItem>
-                        <SelectItem value="1000+">1000+</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    {errors.potentialUsers && (
-                      <p className="mt-1 text-sm text-destructive">
-                        {errors.potentialUsers}
-                      </p>
-                    )}
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Current Patient Volume
+                  </label>
+                  <Select
+                    value={formData.potentialUsers}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, potentialUsers: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select range (optional)" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white z-50">
+                      <SelectItem value="1-50">1-50</SelectItem>
+                      <SelectItem value="51-200">51-200</SelectItem>
+                      <SelectItem value="201-500">201-500</SelectItem>
+                      <SelectItem value="501-1000">501-1000</SelectItem>
+                      <SelectItem value="1000+">1000+</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <p className="mt-1 text-xs text-muted-foreground">Optional</p>
                 </div>
 
                 <div>
