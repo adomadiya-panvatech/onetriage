@@ -6,7 +6,7 @@ import {
   Award, Lock, HeartPulse, Sparkles
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
-import heroImage from "@/assets/hero-3d-healthcare.jpg";
+import heroImage from "@/assets/hero-telemedicine.jpg";
 
 const HomePage = () => {
   const scrollToHowItWorks = () => {
@@ -192,7 +192,7 @@ const HomePage = () => {
             <div className="relative">
               <img
                 src={heroImage}
-                alt="3D visualization of AI-powered healthcare referral management system with automated patient triage and network coordination"
+                alt="AI-powered patient triage and healthcare referral management system streamlining operations"
                 className="rounded-2xl shadow-2xl w-full"
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg hidden md:block">
